@@ -1,16 +1,48 @@
-import { Grid } from '@chakra-ui/react';
+import { Box, Text } from '@chakra-ui/react';
+import { Fade } from 'react-awesome-reveal';
+import Typewriter from 'typewriter-effect';
 
-import CTASection from './components/CTASection';
-import SomeImage from './components/SomeImage';
-import SomeText from './components/SomeText';
+import Social from './components/Social';
+
+interface Styles {
+  nameStyle: React.CSSProperties;
+  inlineChild: React.CSSProperties;
+  mainContainer: React.CSSProperties;
+}
+
+const styles: Styles = {
+  nameStyle: {
+    fontSize: '5vh',
+  },
+  inlineChild: {
+    display: 'inline-block',
+  },
+  mainContainer: {
+    height: '100%',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+};
 
 const Home = () => {
   return (
-    <Grid gap={4}>
-      <SomeText />
-      <SomeImage />
-      <CTASection />
-    </Grid>
+    <Box style={styles.mainContainer}>
+      <Fade>
+        <Text as="h1" style={styles.nameStyle}>
+          Sergio Arrighi
+        </Text>
+        <Typewriter
+          options={{
+            loop: true,
+            autoStart: true,
+            strings: ['Some', 'Random', 'Bullshit'],
+          }}
+        />
+        <Social />
+      </Fade>
+    </Box>
   );
 };
 
