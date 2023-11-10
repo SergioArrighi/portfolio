@@ -1,6 +1,9 @@
 import { Box, Text } from '@chakra-ui/react';
+import { useEffect, useState } from 'react';
 import { Fade } from 'react-awesome-reveal';
 import Typewriter from 'typewriter-effect';
+
+import data from '~/lib/constants/data';
 
 import Social from './components/Social';
 
@@ -26,22 +29,40 @@ const styles: Styles = {
   },
 };
 
+interface HomeData {
+  name: string;
+  roles: string[];
+}
+
 const Home = () => {
+  const [homeData, setHomeData] = useState<HomeData | undefined>(undefined);
+
+  useEffect(() => {
+    fetch(data.home, {
+      method: 'GET',
+    })
+      .then((res) => res.json())
+      .then((res) => setHomeData(res))
+      .catch((err) => err);
+  }, []);
+
   return (
     <Box style={styles.mainContainer}>
-      <Fade>
-        <Text as="h1" style={styles.nameStyle}>
-          Sergio Arrighi
-        </Text>
-        <Typewriter
-          options={{
-            loop: true,
-            autoStart: true,
-            strings: ['Some', 'Random', 'Bullshit'],
-          }}
-        />
-        <Social />
-      </Fade>
+      {homeData && (
+        <Fade>
+          <Text as="h1" style={styles.nameStyle}>
+            {homeData.name}
+          </Text>
+          <Typewriter
+            options={{
+              loop: true,
+              autoStart: true,
+              strings: homeData.roles,
+            }}
+          />
+          <Social />
+        </Fade>
+      )}
     </Box>
   );
 };

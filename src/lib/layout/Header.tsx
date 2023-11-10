@@ -1,4 +1,5 @@
 import { HamburgerIcon, CloseIcon } from '@chakra-ui/icons';
+import type { UseDisclosureReturn } from '@chakra-ui/react';
 import {
   Box,
   Collapse,
@@ -14,20 +15,28 @@ import {
   useColorModeValue,
   useDisclosure,
 } from '@chakra-ui/react';
+import { Link as RouterLink } from 'react-router-dom';
 
 import ThemeToggle from './ThemeToggle';
 
 interface NavItem {
   label: string;
   href?: string;
+  nav?: UseDisclosureReturn;
 }
 
 const NAV_ITEMS: Array<NavItem> = [
   {
     label: 'Home',
+    href: '/',
   },
   {
     label: 'About',
+    href: '/about',
+  },
+  {
+    label: 'Skills',
+    href: '/skills',
   },
 ];
 
@@ -42,8 +51,9 @@ const DesktopNav = () => {
           <Popover trigger="hover" placement="bottom-start">
             <PopoverTrigger>
               <Link
+                as={RouterLink}
                 p={2}
-                href={navItem.href ?? '#'}
+                to={navItem.href ?? '#'}
                 fontSize="sm"
                 fontWeight={500}
                 color={linkColor}
@@ -62,22 +72,23 @@ const DesktopNav = () => {
   );
 };
 
-const MobileNavItem = ({ label, href }: NavItem) => (
+const MobileNavItem = ({ label, href, nav }: NavItem) => (
   <Stack spacing={4}>
     <Flex
       py={2}
-      as={Link}
-      href={href ?? '#'}
+      as={RouterLink}
+      to={href ?? '#'}
       justify="space-between"
       align="center"
       _hover={{
         textDecoration: 'none',
       }}
     >
-      <Link key={label} py={2} href={href}>
+      <Link as={RouterLink} key={label} py={2} to={href}>
         <Text
           fontWeight={600}
           color={useColorModeValue('gray.600', 'gray.200')}
+          onClick={nav?.onToggle}
         >
           {label}
         </Text>
@@ -86,7 +97,11 @@ const MobileNavItem = ({ label, href }: NavItem) => (
   </Stack>
 );
 
-const MobileNav = () => {
+interface MobileNavProps {
+  nav: UseDisclosureReturn;
+}
+
+const MobileNav = ({ nav }: MobileNavProps) => {
   return (
     <Stack
       bg={useColorModeValue('menu.light', 'menu.dark')}
@@ -94,7 +109,7 @@ const MobileNav = () => {
       display={{ md: 'none' }}
     >
       {NAV_ITEMS.map((navItem) => (
-        <MobileNavItem key={navItem.label} {...navItem} />
+        <MobileNavItem key={navItem.label} {...navItem} nav={nav} />
       ))}
     </Stack>
   );
@@ -165,7 +180,7 @@ const Header = () => {
       </Flex>
 
       <Collapse in={nav.isOpen} animateOpacity>
-        <MobileNav />
+        <MobileNav nav={nav} />
       </Collapse>
     </Box>
   );
