@@ -1,22 +1,21 @@
 /* eslint-disable no-param-reassign */
-import { Box, Text } from '@chakra-ui/react';
-import { useEffect, useRef } from 'react';
+import type { SystemStyleObject } from '@chakra-ui/react';
+import { Box, Text, useMultiStyleConfig } from '@chakra-ui/react';
+import { useLayoutEffect, useRef } from 'react';
 
 export interface ExpBarProps {
   currentExp: number;
   maxExp: number;
+  animate: boolean;
 }
 
-const XpBar = ({ currentExp, maxExp }: ExpBarProps) => {
+const XpBar = ({ currentExp, maxExp, animate }: ExpBarProps) => {
   const incrementXp: number = import.meta.env.VITE_XP_BAR_INCREMENT;
   const xpBarRef = useRef<HTMLDivElement>(null);
+  const styles: Record<string, SystemStyleObject> =
+    useMultiStyleConfig('XpBar');
 
-  const xpBarBlockStyle = {
-    width: `${incrementXp}`,
-    border: 2,
-  };
-
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (xpBarRef.current) {
       const fillBlocks = xpBarRef.current.querySelectorAll(
         '.xp-bar-fill'
@@ -31,23 +30,23 @@ const XpBar = ({ currentExp, maxExp }: ExpBarProps) => {
         );
       });
     }
-  }, [maxExp, incrementXp, xpBarBlockStyle.width]);
+  }, [maxExp, incrementXp, styles.fill.width]);
 
   return (
-    <Box className="xp-bar" display="inline-flex" ref={xpBarRef}>
+    <Box display="inline-flex" ref={xpBarRef} sx={styles.bar}>
       {Array.from<number, number>(
         { length: currentExp / incrementXp },
         (_, number) => number
       ).map((value) => {
         return (
           <Box
-            key={`exp-${value}`}
+            key={`xp-${value}`}
             className="xp-bar-fill"
-            style={{ ...xpBarBlockStyle, width: '0' }}
+            sx={{ ...styles.fill, width: animate ? '0' : `${incrementXp}%` }}
           />
         );
       })}
-      <Text className="xp-text">
+      <Text sx={{ ...styles.text, transform: 'auto', translateX: '-50%' }}>
         {currentExp}/{maxExp}
       </Text>
     </Box>

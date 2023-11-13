@@ -1,11 +1,18 @@
+import type { SystemStyleObject } from '@chakra-ui/react';
 import { Box } from '@chakra-ui/react';
+import type { CSSProperties } from 'react';
 import { SocialIcon } from 'react-social-icons';
 
 interface Styles {
-  iconStyle: React.CSSProperties;
+  socialStyle: SystemStyleObject;
+  iconStyle: CSSProperties;
 }
 
 const styles: Styles = {
+  socialStyle: {
+    position: 'relative',
+    mt: '60px',
+  },
   iconStyle: {
     marginLeft: 10,
     marginRight: 10,
@@ -31,7 +38,7 @@ const socials: SocialType[] = [
 
 const Social = () => {
   return (
-    <Box style={styles.iconStyle} className="social">
+    <Box sx={styles.socialStyle}>
       {socials
         ? socials.map((social) => (
             <SocialIcon
@@ -39,7 +46,6 @@ const Social = () => {
               style={styles.iconStyle}
               url={social.href}
               network={social.network}
-              // bgColor={theme.socialIconBgColor}
               target="_blank"
               rel="noopener"
             />

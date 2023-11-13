@@ -1,9 +1,10 @@
 import { Box, Text } from '@chakra-ui/react';
-import { useEffect, useState } from 'react';
+import { useContext } from 'react';
 import { Fade } from 'react-awesome-reveal';
 import Typewriter from 'typewriter-effect';
 
-import data from '~/lib/constants/data';
+import type { ProfileBundle } from '~/lib/contexts/ProfileContext';
+import { ProfileContext } from '~/lib/contexts/ProfileContext';
 
 import Social from './components/Social';
 
@@ -29,35 +30,21 @@ const styles: Styles = {
   },
 };
 
-interface HomeData {
-  name: string;
-  roles: string[];
-}
-
 const Home = () => {
-  const [homeData, setHomeData] = useState<HomeData | undefined>(undefined);
-
-  useEffect(() => {
-    fetch(data.home, {
-      method: 'GET',
-    })
-      .then((res) => res.json())
-      .then((res) => setHomeData(res))
-      .catch((err) => err);
-  }, []);
+  const { home } = useContext<ProfileBundle>(ProfileContext);
 
   return (
     <Box style={styles.mainContainer}>
-      {homeData && (
+      {home && (
         <Fade>
           <Text as="h1" style={styles.nameStyle}>
-            {homeData.name}
+            {home.name}
           </Text>
           <Typewriter
             options={{
               loop: true,
               autoStart: true,
-              strings: homeData.roles,
+              strings: home.roles,
             }}
           />
           <Social />

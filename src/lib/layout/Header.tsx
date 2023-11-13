@@ -38,6 +38,10 @@ const NAV_ITEMS: Array<NavItem> = [
     label: 'Skills',
     href: '/skills',
   },
+  {
+    label: 'Career',
+    href: '/career',
+  },
 ];
 
 const DesktopNav = () => {

@@ -1,7 +1,90 @@
-import { extendTheme } from '@chakra-ui/react';
+import { createMultiStyleConfigHelpers, extendTheme } from '@chakra-ui/react';
 import { type StyleFunctionProps, mode } from '@chakra-ui/theme-tools';
 
 import { config } from './config';
+
+const aboutHelpers = createMultiStyleConfigHelpers(['text', 'image']);
+const About = aboutHelpers.defineMultiStyleConfig({
+  baseStyle: {
+    text: {
+      margin: 10,
+      flexDirection: 'column',
+      whiteSpace: 'pre-wrap',
+      textAlign: 'left',
+      fontSize: '1.2em',
+      fontWeight: 500,
+    },
+    image: {
+      margin: 10,
+      justifyContent: 'center',
+      alignItems: 'center',
+      display: 'flex',
+    },
+  },
+});
+
+const skillsHelpers = createMultiStyleConfigHelpers(['skill', 'icon', 'badge']);
+const Skill = skillsHelpers.defineMultiStyleConfig({
+  baseStyle: {
+    skill: {
+      maxWidth: '5vh',
+      mt: 2,
+      lineHeight: '2vh',
+      fontWeight: 'bold',
+      boxShadow: 'dark-lg',
+      borderRadius: '10px',
+      minW: '120px',
+      bg: 'rgba(0, 0, 0, 0.25)',
+    },
+    icon: {
+      height: '60px',
+      margin: 1,
+      alignSelf: 'center',
+    },
+    badge: {
+      boxShadow: 'dark-lg',
+      borderRadius: 10,
+      cursor: 'zoom-in',
+    },
+  },
+});
+
+const xpHelpers = createMultiStyleConfigHelpers(['bar', 'fill', 'text']);
+const XpBar = xpHelpers.defineMultiStyleConfig({
+  baseStyle: {
+    bar: {
+      width: '12vh',
+      height: '2.5vh',
+      backgroundColor: '#33333342',
+      border: '1px solid #000',
+      position: 'relative',
+    },
+    fill: {
+      height: '100%',
+      backgroundColor: 'rgba(0, 255, 0, 0.681)',
+      transition: 'width 0.3s ease-in-out',
+      borderRadius: '10px',
+    },
+    text: {
+      position: 'absolute',
+      top: 0,
+      left: '50%',
+      lineHeight: '2vh',
+      color: '#fff',
+      fontWeight: 'bold',
+    },
+  },
+});
+
+const timelineHelpers = createMultiStyleConfigHelpers(['exp']);
+const TimelineItem = timelineHelpers.defineMultiStyleConfig({
+  baseStyle: {
+    exp: {
+      background: 'rgba(0, 0, 0, 0.25)',
+      rounded: 'lg',
+    },
+  },
+});
 
 export const theme = extendTheme({
   styles: {
@@ -16,8 +99,10 @@ export const theme = extendTheme({
     body: 'Plus Jakarta Sans, sans-serif',
   },
   components: {
-    // Button: {
-    // }
+    About,
+    Skill,
+    XpBar,
+    TimelineItem,
   },
   colors: {
     primary: {
@@ -25,8 +110,12 @@ export const theme = extendTheme({
       light: '#c6dae7',
     },
     secondary: {
-      dark: '#a10b3e',
+      dark: '#832959',
       light: '#a10b3e',
+    },
+    accent: {
+      dark: '#d2aa5c',
+      light: '#eadc9d',
     },
     text: {
       dark: '#a10b3e',

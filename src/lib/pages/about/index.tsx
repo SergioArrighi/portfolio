@@ -1,36 +1,20 @@
-import { Box, HStack, Image, Text, VStack } from '@chakra-ui/react';
-import { useEffect, useState } from 'react';
+import type { SystemStyleObject } from '@chakra-ui/react';
+import {
+  Box,
+  HStack,
+  Image,
+  Text,
+  VStack,
+  useMultiStyleConfig,
+} from '@chakra-ui/react';
+import { useContext } from 'react';
 import { Fade } from 'react-awesome-reveal';
 
 import PageTitle from '~/lib/components/PageTitle';
-import data from '~/lib/constants/data';
-
-interface Styles {
-  introTextContainer: React.CSSProperties;
-  introImageContainer: React.CSSProperties;
-}
-
-const styles: Styles = {
-  introTextContainer: {
-    margin: 10,
-    flexDirection: 'column',
-    whiteSpace: 'pre-wrap',
-    textAlign: 'left',
-    fontSize: '1.2em',
-    fontWeight: 500,
-  },
-  introImageContainer: {
-    margin: 10,
-    justifyContent: 'center',
-    alignItems: 'center',
-    display: 'flex',
-  },
-};
-
-interface AboutData {
-  about: string;
-  imageSource: string;
-}
+import {
+  ProfileContext,
+  type ProfileBundle,
+} from '~/lib/contexts/ProfileContext';
 
 interface AboutProps {
   title: string;
@@ -38,30 +22,23 @@ interface AboutProps {
 
 const About = (props: AboutProps) => {
   const { title } = props;
-  const [aboutData, setAboutData] = useState<AboutData | undefined>(undefined);
-
-  useEffect(() => {
-    fetch(data.about, {
-      method: 'GET',
-    })
-      .then((res) => res.json())
-      .then((res) => setAboutData(res))
-      .catch((err) => err);
-  }, []);
+  const { about } = useContext<ProfileBundle>(ProfileContext);
+  const styles: Record<string, SystemStyleObject> =
+    useMultiStyleConfig('About');
 
   return (
     <>
       <PageTitle title={title} />
-      {aboutData && (
+      {about && (
         <Fade>
           <Box className="section-content-container">
             <HStack alignItems="flex-start">
               <VStack>
-                <Text style={styles.introTextContainer}>{aboutData.about}</Text>
+                <Text sx={styles.text}>{about.about}</Text>
               </VStack>
               <VStack>
-                <Text style={styles.introImageContainer}>
-                  <Image src={aboutData.imageSource} alt="profile" />
+                <Text sx={styles.image}>
+                  <Image src={about.imageSrc} alt="profile" />
                 </Text>
               </VStack>
             </HStack>
