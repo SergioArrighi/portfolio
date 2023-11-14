@@ -42,7 +42,7 @@ const Skills = (props: SkillsProps) => {
             onChange={handleSearch}
           />
           {skills.items.map((skill: SkillData) => (
-            <Box key={skill.title} borderRadius={10}>
+            <Box key={`skill-data-${skill.title}`} borderRadius={10}>
               <Text fontWeight="extrabold">{skill.title}</Text>
               <SimpleGrid minChildWidth="130px" mt={2} mb={2}>
                 {skill.items
@@ -52,7 +52,11 @@ const Skills = (props: SkillsProps) => {
                     );
                   })
                   .map((item: SkillItem) => (
-                    <Skill skill={item} animate />
+                    <Skill
+                      key={`skill-item-${item.title}`}
+                      skill={item}
+                      animate
+                    />
                   ))}
               </SimpleGrid>
             </Box>

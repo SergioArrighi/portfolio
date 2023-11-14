@@ -191,12 +191,13 @@ const TimelineItem = (props: TimelineItemProps) => {
                 exp.skills.includes(item.title)
               ).map((item: SkillItem) => (
                 <GridItem
+                  key={`timeline-skill-${item.title}`}
                   bg={accentColor}
                   display="inline-flex"
                   m={1}
                   p={1}
                   sx={skillStyles.badge}
-                  onClick={(event: MouseEvent<HTMLDivElement>) =>
+                  onMouseDown={(event: MouseEvent<HTMLDivElement>) =>
                     handleSkillClick(event, item)
                   }
                 >
@@ -231,7 +232,7 @@ const Timeline = ({ experiences }: TimelineProps) => {
   return (
     <Box>
       {experiences.map((exp: ExpItem, index: number) => (
-        <Flex key={exp.title} mb="10px">
+        <Flex key={`${exp.title}-${exp.subtitle}`} mb="10px">
           {/* Desktop view(left card) */}
           {isDesktop && isEven(index) && (
             <>

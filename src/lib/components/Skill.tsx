@@ -7,8 +7,6 @@ import {
   useMultiStyleConfig,
   Popover,
   PopoverContent,
-  PopoverArrow,
-  PopoverCloseButton,
   PopoverBody,
   useColorModeValue,
 } from '@chakra-ui/react';
@@ -71,8 +69,6 @@ export const SkillPopover = ({
           left: position.left,
         }}
       >
-        <PopoverArrow />
-        <PopoverCloseButton />
         <PopoverBody>
           {/* Popup content goes here */}
           <Skill skill={skill} animate={false} />
