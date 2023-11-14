@@ -3,6 +3,8 @@ import { type StyleFunctionProps, mode } from '@chakra-ui/theme-tools';
 
 import { config } from './config';
 
+const transparentBg = 'rgba(0, 0, 0, 0.25)';
+
 const aboutHelpers = createMultiStyleConfigHelpers(['text', 'image']);
 const About = aboutHelpers.defineMultiStyleConfig({
   baseStyle: {
@@ -34,7 +36,7 @@ const Skill = skillsHelpers.defineMultiStyleConfig({
       boxShadow: 'dark-lg',
       borderRadius: '10px',
       minW: '120px',
-      bg: 'rgba(0, 0, 0, 0.25)',
+      bg: transparentBg,
     },
     icon: {
       height: '60px',
@@ -80,8 +82,19 @@ const timelineHelpers = createMultiStyleConfigHelpers(['exp']);
 const TimelineItem = timelineHelpers.defineMultiStyleConfig({
   baseStyle: {
     exp: {
-      background: 'rgba(0, 0, 0, 0.25)',
+      background: transparentBg,
       rounded: 'lg',
+    },
+  },
+});
+
+const projectsHelpers = createMultiStyleConfigHelpers(['project']);
+const ProjectItem = projectsHelpers.defineMultiStyleConfig({
+  baseStyle: {
+    project: {
+      background: transparentBg,
+      rounded: 'lg',
+      width: '100%',
     },
   },
 });
@@ -103,6 +116,7 @@ export const theme = extendTheme({
     Skill,
     XpBar,
     TimelineItem,
+    ProjectItem,
   },
   colors: {
     primary: {

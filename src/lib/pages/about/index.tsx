@@ -15,12 +15,9 @@ import {
   ProfileContext,
   type ProfileBundle,
 } from '~/lib/contexts/ProfileContext';
+import type { PageProps } from '~/lib/router/routes';
 
-interface AboutProps {
-  title: string;
-}
-
-const About = (props: AboutProps) => {
+const About = (props: PageProps) => {
   const { title } = props;
   const { about } = useContext<ProfileBundle>(ProfileContext);
   const styles: Record<string, SystemStyleObject> =
@@ -31,7 +28,7 @@ const About = (props: AboutProps) => {
       <PageTitle title={title} />
       {about && (
         <Fade>
-          <Box className="section-content-container">
+          <Box>
             <HStack alignItems="flex-start">
               <VStack>
                 <Text sx={styles.text}>{about.about}</Text>

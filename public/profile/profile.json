@@ -236,5 +236,25 @@
         }
       ]
     }
+  ],
+  "projects" : [
+    {
+      "title": "Worker",
+      "description": "A system for work desks reservation and activation",
+      "links": [
+      ],
+      "images" : [
+        "images/projects/worker/worker-1.png"
+      ],
+      "skills" : [
+        "Node",
+        "Typescript",
+        "NestJS",
+        "React",
+        "MaterialUI",
+        "MongoDB",
+        "OpenAPI"
+      ]
+    }
   ]
 }

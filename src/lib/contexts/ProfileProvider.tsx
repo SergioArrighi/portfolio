@@ -9,6 +9,7 @@ import type {
   ExpData,
   SkillItem,
   SkillData,
+  ProjectItem,
 } from './ProfileContext';
 import { ProfileContext } from './ProfileContext';
 
@@ -25,6 +26,7 @@ const ProfileProvider: React.FC<ProfileProviderProps> = (props) => {
     items: [],
   });
   const [experiences, setExperiences] = useState<ExpData[]>([]);
+  const [projects, setProjects] = useState<ProjectItem[]>([]);
 
   useEffect(() => {
     fetch('profile/profile.json', {
@@ -36,6 +38,7 @@ const ProfileProvider: React.FC<ProfileProviderProps> = (props) => {
         setAbout(res.about);
         setSkills(res.skills);
         setExperiences(res.experiences);
+        setProjects(res.projects);
       })
       .catch((err) => err);
   }, []);
@@ -50,8 +53,8 @@ const ProfileProvider: React.FC<ProfileProviderProps> = (props) => {
   );
 
   const profileBundle: ProfileBundle = useMemo(() => {
-    return { home, about, skills, experiences, getSkills };
-  }, [home, about, skills, experiences, getSkills]);
+    return { home, about, skills, experiences, projects, getSkills };
+  }, [home, about, skills, experiences, projects, getSkills]);
 
   return (
     <ProfileContext.Provider value={profileBundle}>

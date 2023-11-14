@@ -11,14 +11,11 @@ import { useContext } from 'react';
 import PageTitle from '~/lib/components/PageTitle';
 import { ProfileContext } from '~/lib/contexts/ProfileContext';
 import type { ProfileBundle, ExpData } from '~/lib/contexts/ProfileContext';
+import type { PageProps } from '~/lib/router/routes';
 
 import Timeline from './components/Timeline';
 
-interface CareerProps {
-  title: string;
-}
-
-const Career = (props: CareerProps) => {
+const Career = (props: PageProps) => {
   const { title } = props;
   const { experiences } = useContext<ProfileBundle>(ProfileContext);
 

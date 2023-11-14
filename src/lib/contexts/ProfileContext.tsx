@@ -47,11 +47,20 @@ export interface ExpData {
   items: ExpItem[];
 }
 
+export interface ProjectItem {
+  title: string;
+  description: string;
+  links?: string[];
+  images?: string[];
+  skills?: string[];
+}
+
 export interface ProfileBundle {
   home: HomeData;
   about: AboutData;
   skills: SkillsData;
   experiences: ExpData[];
+  projects: ProjectItem[];
   getSkills: (filter: (item: SkillItem) => boolean) => SkillItem[];
 }
 
@@ -60,6 +69,7 @@ export const defaultProfileBundle: ProfileBundle = {
   about: { about: '', imageSrc: '' },
   skills: { intro: '', items: [] },
   experiences: [],
+  projects: [],
   getSkills: () => [],
 };
 

@@ -3,9 +3,14 @@ import type { PathRouteProps } from 'react-router-dom';
 
 import About from '../pages/about';
 import Career from '../pages/career';
+import Projects from '../pages/projects';
 import Skills from '../pages/skills';
 
 const Home = React.lazy(() => import('~/lib/pages/home'));
+
+export interface PageProps {
+  title: string;
+}
 
 export const routes: Array<PathRouteProps> = [
   {
@@ -23,6 +28,10 @@ export const routes: Array<PathRouteProps> = [
   {
     path: '/career',
     element: <Career title="Career" />,
+  },
+  {
+    path: '/Projects',
+    element: <Projects title="Projects" />,
   },
 ];
 

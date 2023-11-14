@@ -16,13 +16,12 @@ import {
   ListItem,
   List,
   SimpleGrid,
-  GridItem,
   useDisclosure,
 } from '@chakra-ui/react';
 import type { MouseEvent } from 'react';
 import { useContext, useRef, useState } from 'react';
 
-import { SkillPopover } from '~/lib/components/Skill';
+import { SkillBadge, SkillPopover } from '~/lib/components/Skill';
 import { ProfileContext } from '~/lib/contexts/ProfileContext';
 import type {
   ProfileBundle,
@@ -101,14 +100,11 @@ const TimelineItem = (props: TimelineItemProps) => {
   } = useDisclosure();
   const timelineStyles: Record<string, SystemStyleObject> =
     useMultiStyleConfig('TimelineItem');
-  const skillStyles: Record<string, SystemStyleObject> =
-    useMultiStyleConfig('Skill');
   const theme = useTheme();
   const borderColorValue = `transparent ${useColorModeValue(
     theme.colors.secondary.light,
     theme.colors.secondary.dark
   )} transparent`;
-  const accentColor = useColorModeValue('accent.light', 'accent.dark');
   // For even id show card on left side
   // For odd id show card on right side
   const isEvenId = isEven(index);
@@ -190,20 +186,7 @@ const TimelineItem = (props: TimelineItemProps) => {
               {getSkills((item: SkillItem) =>
                 exp.skills.includes(item.title)
               ).map((item: SkillItem) => (
-                <GridItem
-                  key={`timeline-skill-${item.title}`}
-                  bg={accentColor}
-                  display="inline-flex"
-                  m={1}
-                  p={1}
-                  sx={skillStyles.badge}
-                  onMouseDown={(event: MouseEvent<HTMLDivElement>) =>
-                    handleSkillClick(event, item)
-                  }
-                >
-                  <Avatar size="2xs" src={item.icon} bg="white" />
-                  <Text fontSize="xs">{item.title}</Text>
-                </GridItem>
+                <SkillBadge skill={item} handleClick={handleSkillClick} />
               ))}
             </SimpleGrid>
           </VStack>

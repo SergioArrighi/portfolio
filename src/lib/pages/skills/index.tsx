@@ -11,12 +11,9 @@ import {
   type ProfileBundle,
   ProfileContext,
 } from '~/lib/contexts/ProfileContext';
+import type { PageProps } from '~/lib/router/routes';
 
-interface SkillsProps {
-  title: string;
-}
-
-const Skills = (props: SkillsProps) => {
+const Skills = (props: PageProps) => {
   const { title } = props;
   const [search, setSearch] = useState<string>('');
   const { skills } = useContext<ProfileBundle>(ProfileContext);

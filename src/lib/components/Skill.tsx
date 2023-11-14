@@ -9,8 +9,9 @@ import {
   PopoverContent,
   PopoverBody,
   useColorModeValue,
+  Avatar,
 } from '@chakra-ui/react';
-import type { RefObject } from 'react';
+import type { MouseEvent, RefObject } from 'react';
 
 import type { SkillItem } from '../contexts/ProfileContext';
 
@@ -32,6 +33,34 @@ export const Skill = ({ skill, animate }: SkillProps) => {
         <XpBar currentExp={skill.xp} maxExp={100} animate={animate} />
         <Image src={skill.icon} sx={styles.icon} />
       </Box>
+    </GridItem>
+  );
+};
+
+export interface SkillBadgeProps {
+  skill: SkillItem;
+  handleClick: (event: MouseEvent<HTMLDivElement>, skill: SkillItem) => void;
+}
+
+export const SkillBadge = ({ skill, handleClick }: SkillBadgeProps) => {
+  const skillStyles: Record<string, SystemStyleObject> =
+    useMultiStyleConfig('Skill');
+  const accentColor = useColorModeValue('accent.light', 'accent.dark');
+
+  return (
+    <GridItem
+      key={`timeline-skill-${skill.title}`}
+      bg={accentColor}
+      display="inline-flex"
+      m={1}
+      p={1}
+      sx={skillStyles.badge}
+      onMouseDown={(event: MouseEvent<HTMLDivElement>) =>
+        handleClick(event, skill)
+      }
+    >
+      <Avatar size="2xs" src={skill.icon} bg="white" />
+      <Text fontSize="xs">{skill.title}</Text>
     </GridItem>
   );
 };
@@ -66,7 +95,7 @@ export const SkillPopover = ({
         style={{
           position: 'absolute',
           top: position.top,
-          left: position.left,
+          left: position.left - 30,
         }}
       >
         <PopoverBody>
