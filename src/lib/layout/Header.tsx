@@ -110,6 +110,7 @@ const MobileNav = ({ nav }: MobileNavProps) => {
     <Stack
       bg={useColorModeValue('menu.light', 'menu.dark')}
       p={4}
+      borderBottomRadius={10}
       display={{ md: 'none' }}
     >
       {NAV_ITEMS.map((navItem) => (
