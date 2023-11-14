@@ -88,13 +88,15 @@ const TimelineItem = timelineHelpers.defineMultiStyleConfig({
   },
 });
 
-const projectsHelpers = createMultiStyleConfigHelpers(['project']);
+const projectsHelpers = createMultiStyleConfigHelpers(['card']);
 const ProjectItem = projectsHelpers.defineMultiStyleConfig({
   baseStyle: {
-    project: {
+    card: {
       background: transparentBg,
+      boxShadow: 'dark-lg',
       rounded: 'lg',
       width: '100%',
+      marginTop: 2,
     },
   },
 });

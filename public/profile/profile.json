@@ -241,6 +241,8 @@
     {
       "title": "Worker",
       "description": "A system for work desks reservation and activation",
+      "yearStart": 2021,
+      "yearEnd": 2022,
       "links": [
       ],
       "images" : [

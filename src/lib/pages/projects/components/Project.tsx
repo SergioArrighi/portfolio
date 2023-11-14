@@ -52,14 +52,8 @@ const Project = ({ project }: ProjectProps) => {
 
   return (
     <>
-      <Card
-        maxW="sm"
-        overflow="hidden"
-        boxShadow="md"
-        sx={projectStyles.project}
-      >
+      <Card overflow="hidden" sx={projectStyles.card}>
         <Image src={project.images![0]} />
-
         <CardBody p="6">
           <VStack align="start" spacing={2}>
             <Text fontSize="xl" fontWeight="semibold">
