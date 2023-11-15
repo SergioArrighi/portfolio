@@ -50,6 +50,8 @@ export interface ExpData {
 export interface ProjectItem {
   title: string;
   description: string;
+  yearStart: number;
+  yearEnd: number;
   links?: string[];
   images?: string[];
   skills?: string[];

@@ -101,6 +101,15 @@ const ProjectItem = projectsHelpers.defineMultiStyleConfig({
   },
 });
 
+const carouselHelpers = createMultiStyleConfigHelpers(['arrows']);
+const Carousel = carouselHelpers.defineMultiStyleConfig({
+  baseStyle: {
+    arrows: {
+      borderRadius: '10px',
+    },
+  },
+});
+
 export const theme = extendTheme({
   styles: {
     global: (props: StyleFunctionProps) => ({
@@ -119,6 +128,7 @@ export const theme = extendTheme({
     XpBar,
     TimelineItem,
     ProjectItem,
+    Carousel,
   },
   colors: {
     primary: {

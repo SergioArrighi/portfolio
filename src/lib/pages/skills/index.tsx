@@ -37,10 +37,13 @@ const Skills = (props: PageProps) => {
             placeholder="Search...🔎"
             value={search}
             onChange={handleSearch}
+            mt={2}
           />
           {skills.items.map((skill: SkillData) => (
             <Box key={`skill-data-${skill.title}`} borderRadius={10}>
-              <Text fontWeight="extrabold">{skill.title}</Text>
+              <Text fontWeight="extrabold" mt={3}>
+                {skill.title}
+              </Text>
               <SimpleGrid minChildWidth="130px" mt={2} mb={2}>
                 {skill.items
                   .filter((item: SkillItem) => {

@@ -44,11 +44,6 @@
         "title": "Frameworks & Technologies",
         "items": [
           {
-            "icon": "images/skills/spring.svg",
-            "title": "Spring",
-            "xp": 70
-          },
-          {
             "icon": "images/skills/node.svg",
             "title": "Node",
             "xp": 90
@@ -79,9 +74,19 @@
             "xp": 80
           },
           {
+            "icon": "images/skills/spring.svg",
+            "title": "Spring",
+            "xp": 70
+          },
+          {
             "icon": "images/skills/ethereum.svg",
             "title": "Ethereum",
             "xp": 50
+          },
+          {
+            "icon": "images/skills/ethersjs.svg",
+            "title": "EthersJS/RS",
+            "xp": 60
           },
           {
             "icon": "images/skills/hardhat.svg",
@@ -157,16 +162,86 @@
             "icon":"images/skills/vscode.svg",
             "title":"VSCode",
             "xp": 70
-          },
+          }
+        ]
+      },
+      {
+        "title":"Package managers",
+        "items":[
           {
-            "icon":"images/skills/windows.png",
-            "title":"Windows",
+            "icon":"images/skills/maven.svg",
+            "title":"Maven",
             "xp": 80
           },
           {
-            "icon":"images/skills/linux.png",
-            "title":"Linux",
+            "icon":"images/skills/npm.svg",
+            "title":"Npm",
+            "xp": 90
+          },
+          {
+            "icon":"images/skills/yarn.svg",
+            "title":"Yarn",
+            "xp": 90
+          },
+          {
+            "icon":"images/skills/pnpm.svg",
+            "title":"Pnpm",
             "xp": 70
+          },
+          {
+            "icon":"images/skills/helm.svg",
+            "title":"Helm",
+            "xp": 40
+          },
+          {
+            "icon":"images/skills/chocolatey.svg",
+            "title":"Chocolatey",
+            "xp": 50
+          },
+          {
+            "icon":"images/skills/homebrew.svg",
+            "title":"Homebrew",
+            "xp": 50
+          }
+        ]
+      },
+      {
+        "title":"Quality & Testing",
+        "items":[
+          {
+            "icon":"images/skills/jenkins.svg",
+            "title":"Jenkins",
+            "xp": 50
+          },
+          {
+            "icon":"images/skills/postman.svg",
+            "title":"Postman",
+            "xp": 80
+          },
+          {
+            "icon":"images/skills/mocha.svg",
+            "title":"Mocha",
+            "xp": 60
+          }
+        ]
+      },
+      {
+        "title":"Operating Systems",
+        "items":[
+          {
+            "icon":"images/skills/windows.svg",
+            "title":"Windows",
+            "xp": 100
+          },
+          {
+            "icon":"images/skills/macos.svg",
+            "title":"MacOS",
+            "xp": 90
+          },
+          {
+            "icon":"images/skills/linux.svg",
+            "title":"Linux",
+            "xp": 60
           }
         ]
       }
@@ -246,7 +321,9 @@
       "links": [
       ],
       "images" : [
-        "images/projects/worker/worker-1.png"
+        "images/projects/worker/worker-1.png",
+        "images/projects/worker/worker-2.png",
+        "images/projects/worker/worker-3.png"
       ],
       "skills" : [
         "Node",
