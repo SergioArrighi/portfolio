@@ -24,8 +24,8 @@ dependencies:
     specifier: ^5.0.17
     version: 5.0.17
   chakra-any-carousel:
-    specifier: ^1.0.2
-    version: 1.0.2(@emotion/react@11.11.1)(@emotion/styled@11.11.0)(@types/react@18.2.33)(framer-motion@10.16.5)(react-dom@18.2.0)
+    specifier: ^1.0.4
+    version: 1.0.4(@emotion/react@11.11.1)(@emotion/styled@11.11.0)(@types/react@18.2.33)(framer-motion@10.16.5)(react-dom@18.2.0)
   framer-motion:
     specifier: ^10.16.4
     version: 10.16.5(react-dom@18.2.0)(react@18.2.0)
@@ -2990,8 +2990,8 @@ packages:
   /caniuse-lite@1.0.30001562:
     resolution: {integrity: sha512-kfte3Hym//51EdX4239i+Rmp20EsLIYGdPkERegTgU19hQWCRhsRFGKHTliUlsry53tv17K7n077Kqa0WJU4ng==}
 
-  /chakra-any-carousel@1.0.2(@emotion/react@11.11.1)(@emotion/styled@11.11.0)(@types/react@18.2.33)(framer-motion@10.16.5)(react-dom@18.2.0):
-    resolution: {integrity: sha512-1o8olm2TeMc8HORjCkGM7y89Xjf+OUIyBnY7GlsFzrKrdGfnAQ6tmrKqV0VjyEF2IEzKEv2xD5TUigRI77OZMw==}
+  /chakra-any-carousel@1.0.4(@emotion/react@11.11.1)(@emotion/styled@11.11.0)(@types/react@18.2.33)(framer-motion@10.16.5)(react-dom@18.2.0):
+    resolution: {integrity: sha512-wZFjoG5ph8qaMwfw1y1fAk0N6RrlwzYD3ET97Q7LwFFO7kN5MZPoQRtCp4PPc307skej6BdTVsAChFPzgEqOLA==}
     dependencies:
       '@chakra-ui/react': 2.8.2(@emotion/react@11.11.1)(@emotion/styled@11.11.0)(@types/react@18.2.33)(framer-motion@10.16.5)(react-dom@18.2.0)(react@18.2.0)
       react: 18.2.0
