@@ -4,6 +4,7 @@ import {
   ModalCloseButton,
   ModalContent,
   ModalOverlay,
+  useColorModeValue,
 } from '@chakra-ui/react';
 
 export interface ImageModalProps {
@@ -16,7 +17,7 @@ const ImageModal = ({ imageSrc, isOpen, onClose }: ImageModalProps) => {
   return (
     <Modal isOpen={isOpen} onClose={onClose} size="full">
       <ModalOverlay />
-      <ModalContent>
+      <ModalContent bg={useColorModeValue('primary.light', 'primary.dark')}>
         <ModalCloseButton />
         <Image src={imageSrc} borderRadius={10} />
       </ModalContent>
