@@ -18,7 +18,9 @@ const ImageModal = ({ imageSrc, isOpen, onClose }: ImageModalProps) => {
     <Modal isOpen={isOpen} onClose={onClose} size="full">
       <ModalOverlay />
       <ModalContent bg={useColorModeValue('primary.light', 'primary.dark')}>
-        <ModalCloseButton />
+        <ModalCloseButton
+          bg={useColorModeValue('primary.light', 'primary.dark')}
+        />
         <Image src={imageSrc} borderRadius={10} />
       </ModalContent>
     </Modal>

@@ -18,7 +18,7 @@ import { Carousel, Direction } from 'chakra-any-carousel';
 import type { MouseEvent } from 'react';
 import { useContext, useRef, useState } from 'react';
 import { RiArrowDownDoubleLine, RiArrowUpDoubleLine } from 'react-icons/ri';
-import Markdown from 'react-markdown';
+import ReactMarkdown from 'react-markdown';
 
 import ImageModal from '~/lib/components/ImageModal';
 import { SkillBadge, SkillPopover } from '~/lib/components/Skill';
@@ -45,7 +45,8 @@ const Project = ({ project }: ProjectProps) => {
     xp: 0,
   });
   const [clickedImageSrc, setClickedImageSrc] = useState<string>('');
-  const [isCollapsed, setIsCollapsed] = useState(true);
+  const [isCollapsed, setIsCollapsed] = useState<boolean>(true);
+  const [detailsMarkdown, setDetailsMarkdown] = useState<string>('');
   const elementRef = useRef<HTMLDivElement>(null);
   const {
     isOpen: isSkillOpen,
@@ -78,6 +79,13 @@ const Project = ({ project }: ProjectProps) => {
   };
 
   const handleToggle = () => {
+    if (detailsMarkdown === '') {
+      fetch(`profile/projects/${project.title.toLowerCase()}.md`, {
+        method: 'GET',
+      })
+        .then(async (res) => setDetailsMarkdown(await res.text()))
+        .catch((err) => err);
+    }
     setIsCollapsed(!isCollapsed);
   };
 
@@ -89,8 +97,6 @@ const Project = ({ project }: ProjectProps) => {
     setClickedSkill(skill);
     onSkillOpen();
   };
-
-  const markdown = '# Hi, *Pluto*!';
 
   return (
     <>
@@ -127,8 +133,8 @@ const Project = ({ project }: ProjectProps) => {
                 ml={2}
               />
             </Text>
-            <Collapse in={!isCollapsed}>
-              <Markdown>{markdown}</Markdown>
+            <Collapse in={!isCollapsed} className="markdown">
+              <ReactMarkdown>{detailsMarkdown}</ReactMarkdown>
             </Collapse>
             <HStack spacing={2} ref={elementRef}>
               <SimpleGrid display="inline">
