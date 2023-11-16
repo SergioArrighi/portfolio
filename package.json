@@ -1,8 +1,8 @@
 {
-  "name": "vite-react-chakra-starter",
+  "name": "portfolio",
   "version": "0.1.0",
   "private": true,
-  "author": "sozonome",
+  "author": "sarrighi",
   "scripts": {
     "dev": "vite",
     "build": "pnpm type-check && vite build",
@@ -27,14 +27,16 @@
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
     "@fontsource/plus-jakarta-sans": "^5.0.17",
-    "chakra-any-carousel": "^1.0.4",
+    "chakra-any-carousel": "^1.0.5",
     "framer-motion": "^10.16.4",
     "million": "2.6.4",
     "react": "^18.2.0",
     "react-awesome-reveal": "^4.2.6",
+    "react-device-detect": "^2.2.3",
     "react-dom": "^18.2.0",
     "react-helmet": "^6.1.0",
     "react-icons": "^4.11.0",
+    "react-markdown": "^9.0.1",
     "react-router-dom": "^6.17.0",
     "react-social-icons": "^6.6.0",
     "typewriter-effect": "^2.21.0"

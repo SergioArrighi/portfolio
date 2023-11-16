@@ -1,6 +1,6 @@
 {
-  "short_name": "vite-react-chakra-starter",
-  "name": "Vite React App Template",
+  "short_name": "portfolio",
+  "name": "Advanced portfolio webapp",
   "lang": "en",
   "start_url": "/",
   "background_color": "#FFFFFF",
