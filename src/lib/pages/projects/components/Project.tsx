@@ -17,7 +17,6 @@ import type { CarouselItem } from 'chakra-any-carousel';
 import { Carousel, Direction } from 'chakra-any-carousel';
 import type { MouseEvent } from 'react';
 import { useContext, useRef, useState } from 'react';
-import { isMobile } from 'react-device-detect';
 import { RiArrowDownDoubleLine, RiArrowUpDoubleLine } from 'react-icons/ri';
 import Markdown from 'react-markdown';
 
@@ -70,10 +69,8 @@ const Project = ({ project }: ProjectProps) => {
           imageUrl: image,
         },
         onClick: () => {
-          if (isMobile) {
-            setClickedImageSrc(image);
-            onImageOpen();
-          }
+          setClickedImageSrc(image);
+          onImageOpen();
         },
       };
     });

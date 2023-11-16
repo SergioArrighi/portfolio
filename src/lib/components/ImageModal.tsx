@@ -1,4 +1,10 @@
-import { Image, Modal, ModalContent, ModalOverlay } from '@chakra-ui/react';
+import {
+  Image,
+  Modal,
+  ModalCloseButton,
+  ModalContent,
+  ModalOverlay,
+} from '@chakra-ui/react';
 
 export interface ImageModalProps {
   imageSrc?: string;
@@ -8,9 +14,10 @@ export interface ImageModalProps {
 
 const ImageModal = ({ imageSrc, isOpen, onClose }: ImageModalProps) => {
   return (
-    <Modal isOpen={isOpen} onClose={onClose}>
+    <Modal isOpen={isOpen} onClose={onClose} size="full">
       <ModalOverlay />
       <ModalContent>
+        <ModalCloseButton />
         <Image src={imageSrc} borderRadius={10} />
       </ModalContent>
     </Modal>
