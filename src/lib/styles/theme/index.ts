@@ -9,7 +9,7 @@ const aboutHelpers = createMultiStyleConfigHelpers(['text', 'image']);
 const About = aboutHelpers.defineMultiStyleConfig({
   baseStyle: {
     text: {
-      margin: 10,
+      margin: 3,
       flexDirection: 'column',
       whiteSpace: 'pre-wrap',
       textAlign: 'left',

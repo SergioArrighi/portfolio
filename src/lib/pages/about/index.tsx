@@ -1,8 +1,8 @@
 import type { SystemStyleObject } from '@chakra-ui/react';
 import {
+  Avatar,
   Box,
   HStack,
-  Image,
   Text,
   VStack,
   useMultiStyleConfig,
@@ -29,16 +29,14 @@ const About = (props: PageProps) => {
       {about && (
         <Fade>
           <Box>
-            <HStack alignItems="flex-start">
-              <VStack>
+            <VStack>
+              <HStack>
+                <Avatar size="2xl" src={about.imageSrc} boxShadow={2} />
+              </HStack>
+              <HStack>
                 <Text sx={styles.text}>{about.about}</Text>
-              </VStack>
-              <VStack>
-                <Text sx={styles.image}>
-                  <Image src={about.imageSrc} alt="profile" />
-                </Text>
-              </VStack>
-            </HStack>
+              </HStack>
+            </VStack>
           </Box>
         </Fade>
       )}

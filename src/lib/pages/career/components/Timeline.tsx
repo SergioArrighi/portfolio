@@ -186,7 +186,11 @@ const TimelineItem = (props: TimelineItemProps) => {
               {getSkills((item: SkillItem) =>
                 exp.skills.includes(item.title)
               ).map((item: SkillItem) => (
-                <SkillBadge skill={item} handleClick={handleSkillClick} />
+                <SkillBadge
+                  key={`${exp.title}-skill-${item.title}`}
+                  skill={item}
+                  handleClick={handleSkillClick}
+                />
               ))}
             </SimpleGrid>
           </VStack>

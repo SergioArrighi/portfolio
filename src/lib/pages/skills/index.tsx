@@ -1,5 +1,18 @@
-import { Box, Input, SimpleGrid, Text } from '@chakra-ui/react';
-import type { ChangeEvent } from 'react';
+import {
+  Box,
+  Input,
+  Modal,
+  ModalBody,
+  ModalCloseButton,
+  ModalContent,
+  ModalHeader,
+  ModalOverlay,
+  SimpleGrid,
+  Text,
+  useColorModeValue,
+  useDisclosure,
+} from '@chakra-ui/react';
+import type { ChangeEvent, MouseEvent } from 'react';
 import { useContext, useState } from 'react';
 import { Fade } from 'react-awesome-reveal';
 
@@ -13,16 +26,37 @@ import {
 } from '~/lib/contexts/ProfileContext';
 import type { PageProps } from '~/lib/router/routes';
 
+import SkillProjects from './components/SkillProjects';
+
 const Skills = (props: PageProps) => {
   const { title } = props;
   const [search, setSearch] = useState<string>('');
   const { skills } = useContext<ProfileBundle>(ProfileContext);
+  const [clickedSkill, setClickedSkill] = useState<SkillItem>({
+    icon: '',
+    title: '',
+    xp: 0,
+  });
+  const {
+    isOpen: isSkillProjectsOpen,
+    onOpen: onSkillProjectsOpen,
+    onClose: onSkillProjectsClose,
+  } = useDisclosure();
 
   const handleSearch = (item: ChangeEvent<HTMLInputElement>) => {
     if (item.nativeEvent.target) {
       const input = item.nativeEvent.target as unknown as HTMLInputElement;
       setSearch(input.value.toLowerCase());
     }
+  };
+
+  const handleSkillClick = (
+    event: MouseEvent<HTMLDivElement>,
+    skill: SkillItem
+  ) => {
+    event.stopPropagation();
+    setClickedSkill(skill);
+    onSkillProjectsOpen();
   };
 
   return (
@@ -56,6 +90,9 @@ const Skills = (props: PageProps) => {
                       key={`skill-item-${item.title}`}
                       skill={item}
                       animate
+                      onClick={(event: MouseEvent<HTMLDivElement>) =>
+                        handleSkillClick(event, item)
+                      }
                     />
                   ))}
               </SimpleGrid>
@@ -63,6 +100,16 @@ const Skills = (props: PageProps) => {
           ))}
         </Fade>
       )}
+      <Modal isOpen={isSkillProjectsOpen} onClose={onSkillProjectsClose}>
+        <ModalOverlay />
+        <ModalContent bg={useColorModeValue('primary.light', 'primary.dark')}>
+          <ModalHeader>Skill Projects</ModalHeader>
+          <ModalCloseButton />
+          <ModalBody>
+            <SkillProjects skill={clickedSkill} />
+          </ModalBody>
+        </ModalContent>
+      </Modal>
     </>
   );
 };

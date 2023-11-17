@@ -64,6 +64,7 @@ export interface ProfileBundle {
   experiences: ExpData[];
   projects: ProjectItem[];
   getSkills: (filter: (item: SkillItem) => boolean) => SkillItem[];
+  getProjects: (skillTitle: string) => ProjectItem[];
 }
 
 export const defaultProfileBundle: ProfileBundle = {
@@ -73,6 +74,7 @@ export const defaultProfileBundle: ProfileBundle = {
   experiences: [],
   projects: [],
   getSkills: () => [],
+  getProjects: () => [],
 };
 
 export const ProfileContext =

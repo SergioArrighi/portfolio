@@ -20,15 +20,16 @@ import XpBar from './XpBar';
 export interface SkillProps {
   skill: SkillItem;
   animate: boolean;
+  onClick?: (event: MouseEvent<HTMLDivElement>) => void;
 }
 
-export const Skill = ({ skill, animate }: SkillProps) => {
+export const Skill = ({ skill, animate, onClick }: SkillProps) => {
   const styles: Record<string, SystemStyleObject> =
     useMultiStyleConfig('Skill');
 
   return (
     <GridItem sx={styles.skill} background="transparent">
-      <Box m={1} p={1}>
+      <Box m={1} p={1} onClick={onClick}>
         <Text mb={1}>{skill.title}</Text>
         <XpBar currentExp={skill.xp} maxExp={100} animate={animate} />
         <Image src={skill.icon} sx={styles.icon} />

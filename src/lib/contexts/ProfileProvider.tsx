@@ -52,9 +52,26 @@ const ProfileProvider: React.FC<ProfileProviderProps> = (props) => {
     [skills.items]
   );
 
+  const getProjects = useCallback(
+    (skillTitle: string) => {
+      return projects.filter(
+        (project: ProjectItem) => project.skills?.includes(skillTitle)
+      );
+    },
+    [projects]
+  );
+
   const profileBundle: ProfileBundle = useMemo(() => {
-    return { home, about, skills, experiences, projects, getSkills };
-  }, [home, about, skills, experiences, projects, getSkills]);
+    return {
+      home,
+      about,
+      skills,
+      experiences,
+      projects,
+      getSkills,
+      getProjects,
+    };
+  }, [home, about, skills, experiences, projects, getSkills, getProjects]);
 
   return (
     <ProfileContext.Provider value={profileBundle}>
