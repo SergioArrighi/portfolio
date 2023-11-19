@@ -1,21 +1,14 @@
-import {
-  Box,
-  Text,
-  useColorMode,
-  useColorModeValue,
-  useToken,
-} from '@chakra-ui/react';
-import { useContext, useEffect, useState } from 'react';
+import { Box, Text } from '@chakra-ui/react';
+import { useContext } from 'react';
 import type { BarProps } from 'recharts';
 import {
   XAxis,
   YAxis,
   CartesianGrid,
-  Tooltip,
   ResponsiveContainer,
   BarChart,
   Bar,
-  Cell,
+  Tooltip,
 } from 'recharts';
 
 import type {
@@ -33,68 +26,31 @@ const data = JSON.parse(
   '[{"name":"2021","project 1":2,"project 2": 1},{"name":"2022","project 1":2,"project 2": 1}]'
 );
 
-const getPath = (x: number, y: number, width: number, height: number) => {
-  const yZero = (y as number) + height!;
+const getPath = (x: number, y: number, width: number) => {
+  const yZero = 265;
   const controlAmount = width! / 4;
 
-  return `M${x},265
+  return `M${x},${yZero}
     Q${x + controlAmount},${y} ${x + width / 2},${y}
-    Q${x + width - controlAmount},${y} ${x + width},265Z`;
+    Q${x + width - controlAmount},${y} ${x + width},${yZero}Z`;
 };
 
-const TriangleBar = ({ fill, x, y, width, height }: BarProps) => {
-  const { firstHeight, setHeight } = useState(0);
-
-  console.log(`${x} ${y} ${width} ${height}`);
+const TriangleBar = ({ fill, x, y, width }: BarProps) => {
   return (
     <path
-      d={getPath(x as number, y as number, width!, height!)}
+      d={getPath(x as number, y as number, width!)}
       stroke="none"
       fill={fill}
     />
   );
 };
 
-const CustomTooltip = ({ active, payload, label }) => {
-  if (active && payload && payload.length) {
-    return (
-      <div className="custom-tooltip">
-        <p className="label">{`${label}`}</p>
-        {payload.map((entry, index) => (
-          <p key={`value-${index}`} style={{ color: entry.color }}>
-            {`${entry.name}: ${entry.value}`}
-          </p>
-        ))}
-      </div>
-    );
-  }
-
-  return null;
+const CustomTooltip = () => {
+  return <Text> ciiciococ </Text>;
 };
-
-const colors = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', 'red', 'pink'];
 
 const SkillProjects = ({ skill }: SkillProjectProps) => {
   const { getProjects } = useContext<ProfileBundle>(ProfileContext);
-  const colorMode = useColorMode();
-
-  const [secondaryLight, secondaryDark] = useToken(
-    // the key within the theme, in this case `theme.colors`
-    'colors',
-    // the subkey(s), resolving to `theme.colors.red.100`
-    ['secondary.light', 'secondary.dark']
-    // a single fallback or fallback array matching the length of the previous arg
-  );
-
-  const [activeBar, setActiveBar] = useState(null);
-
-  const handleBarMouseOver = (dataKey) => {
-    console.log(dataKey);
-  };
-
-  const handleBarMouseLeave = () => {
-    //setActiveBar(null);
-  };
 
   const projects = Object.keys(data[0]).filter((key) => key !== 'name');
 
@@ -114,16 +70,14 @@ const SkillProjects = ({ skill }: SkillProjectProps) => {
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis dataKey="name" />
             <YAxis hide />
-            {projects.map((project, index) => (
+            <Tooltip content={<CustomTooltip />} />
+            {projects.map((project) => (
               <Bar
-                key={index}
+                key={project}
                 dataKey={project}
                 stackId="a"
                 shape={<TriangleBar dataKey={project} />}
                 fill={`#${Math.floor(Math.random() * 16777215).toString(16)}44`}
-                onMouseDown={() => handleBarMouseOver(project)}
-                onMouseOver={() => handleBarMouseOver(project)}
-                onMouseLeave={handleBarMouseLeave}
               />
             ))}
           </BarChart>
