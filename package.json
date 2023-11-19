@@ -38,6 +38,7 @@
     "react-markdown": "^9.0.1",
     "react-router-dom": "^6.17.0",
     "react-social-icons": "^6.6.0",
+    "recharts": "^2.9.3",
     "typewriter-effect": "^2.21.0"
   },
   "devDependencies": {
