@@ -103,7 +103,7 @@ const Skills = (props: PageProps) => {
       <Modal isOpen={isSkillProjectsOpen} onClose={onSkillProjectsClose}>
         <ModalOverlay />
         <ModalContent bg={useColorModeValue('primary.light', 'primary.dark')}>
-          <ModalHeader>Skill Projects</ModalHeader>
+          <ModalHeader>{clickedSkill.title} Projects</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
             <SkillProjects skill={clickedSkill} />

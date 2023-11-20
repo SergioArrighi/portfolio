@@ -1,5 +1,15 @@
-import { Box, Text } from '@chakra-ui/react';
-import { useContext } from 'react';
+import {
+  Box,
+  GridItem,
+  Link,
+  SimpleGrid,
+  chakra,
+  useColorMode,
+  useToken,
+} from '@chakra-ui/react';
+import _ from 'lodash';
+import { useCallback, useContext } from 'react';
+import { Link as RouterLink } from 'react-router-dom';
 import type { BarProps } from 'recharts';
 import {
   XAxis,
@@ -8,7 +18,6 @@ import {
   ResponsiveContainer,
   BarChart,
   Bar,
-  Tooltip,
 } from 'recharts';
 
 import type {
@@ -21,10 +30,6 @@ import { ProfileContext } from '~/lib/contexts/ProfileContext';
 export interface SkillProjectProps {
   skill: SkillItem;
 }
-
-const data = JSON.parse(
-  '[{"name":"2021","project 1":2,"project 2": 1},{"name":"2022","project 1":2,"project 2": 1}]'
-);
 
 const getPath = (x: number, y: number, width: number) => {
   const yZero = 265;
@@ -45,47 +50,99 @@ const TriangleBar = ({ fill, x, y, width }: BarProps) => {
   );
 };
 
-const CustomTooltip = () => {
-  return <Text> ciiciococ </Text>;
-};
-
 const SkillProjects = ({ skill }: SkillProjectProps) => {
   const { getProjects } = useContext<ProfileBundle>(ProfileContext);
+  const colorMode = useColorMode();
+  const [secondaryLight, secondaryDark] = useToken('colors', [
+    'secondary.light',
+    'secondary.dark',
+  ]);
 
-  const projects = Object.keys(data[0]).filter((key) => key !== 'name');
+  const getProjectsByYear: () => Map<number, ProjectItem[]> =
+    useCallback(() => {
+      const projectsByYear = new Map();
+      getProjects(skill.title).forEach((item: ProjectItem) => {
+        _.range(item.yearStart, item.yearEnd + 1).forEach((year) => {
+          if (projectsByYear.has(year)) projectsByYear.get(year)!.push(item);
+          else projectsByYear.set(year, [item]);
+        });
+      });
+      return projectsByYear;
+    }, [getProjects, skill.title]);
+
+  const getProjectsTitles: () => string[] = useCallback(() => {
+    return getProjects(skill.title).map(
+      (project: ProjectItem) => project.title
+    );
+  }, [getProjects, skill.title]);
+
+  const getChartData = () => {
+    return Array.from(getProjectsByYear().keys()).map((year: number) => {
+      let projectsPerYear = { name: year };
+      getProjectsByYear()
+        .get(year)
+        ?.forEach((item: ProjectItem) => {
+          projectsPerYear = { ...projectsPerYear, [item.title]: 1 };
+        });
+      return projectsPerYear;
+    });
+  };
 
   return (
     <>
       <Box style={{ width: '100%', height: 300 }}>
         <ResponsiveContainer width="100%" height="100%">
-          <BarChart
-            data={data}
-            margin={{
-              top: 20,
-              right: 30,
-              left: 20,
-              bottom: 5,
-            }}
-          >
-            <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="name" />
-            <YAxis hide />
-            <Tooltip content={<CustomTooltip />} />
-            {projects.map((project) => (
+          <BarChart data={getChartData()}>
+            <CartesianGrid stroke="transparent" />
+            <XAxis stroke="transparent" tick={false} />
+            <YAxis hide tick={false} />
+            {getProjectsTitles().map((project) => (
               <Bar
                 key={project}
                 dataKey={project}
                 stackId="a"
                 shape={<TriangleBar dataKey={project} />}
-                fill={`#${Math.floor(Math.random() * 16777215).toString(16)}44`}
+                fill={`${
+                  colorMode.colorMode === 'light'
+                    ? secondaryLight
+                    : secondaryDark
+                }55`}
               />
             ))}
           </BarChart>
         </ResponsiveContainer>
       </Box>
-      {getProjects(skill.title).map((project: ProjectItem) => (
-        <Text>{project.title}</Text>
-      ))}
+      <Box>
+        <SimpleGrid columns={getProjectsByYear().size}>
+          {Array.from(getProjectsByYear().keys()).map((year: number) => (
+            <GridItem key={year} textAlign="center" p={4}>
+              <chakra.h1
+                fontSize="xl"
+                lineHeight={1.2}
+                fontWeight="bold"
+                w="100%"
+              >
+                {year}
+              </chakra.h1>
+              {getProjectsByYear()
+                .get(year)
+                ?.map((item: ProjectItem) => (
+                  <Box>
+                    <Link
+                      to={`/projects#${item.title
+                        .replace(' ', '-')
+                        .toLowerCase()}`}
+                      textDecoration="underline"
+                      as={RouterLink}
+                    >
+                      {item.title}
+                    </Link>
+                  </Box>
+                ))}
+            </GridItem>
+          ))}
+        </SimpleGrid>
+      </Box>
     </>
   );
 };

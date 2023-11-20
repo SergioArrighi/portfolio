@@ -23,12 +23,18 @@ dependencies:
   '@fontsource/plus-jakarta-sans':
     specifier: ^5.0.17
     version: 5.0.17
+  '@types/lodash':
+    specifier: ^4.14.201
+    version: 4.14.201
   chakra-any-carousel:
     specifier: ^1.0.5
     version: 1.0.5(@emotion/react@11.11.1)(@emotion/styled@11.11.0)(@types/react@18.2.33)(framer-motion@10.16.5)(react-dom@18.2.0)
   framer-motion:
     specifier: ^10.16.4
     version: 10.16.5(react-dom@18.2.0)(react@18.2.0)
+  lodash:
+    specifier: ^4.17.21
+    version: 4.17.21
   million:
     specifier: 2.6.4
     version: 2.6.4

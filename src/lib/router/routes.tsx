@@ -30,7 +30,7 @@ export const routes: Array<PathRouteProps> = [
     element: <Career title="Career" />,
   },
   {
-    path: '/Projects',
+    path: '/projects',
     element: <Projects title="Projects" />,
   },
 ];

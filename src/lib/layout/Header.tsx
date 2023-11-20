@@ -164,8 +164,8 @@ const Header = () => {
             h="10vh"
             src={
               colorMode === 'light'
-                ? './assets/sergio-arrighi-logo-light.svg'
-                : './assets/sergio-arrighi-logo-dark.svg'
+                ? '/assets/sergio-arrighi-logo-light.svg'
+                : '/assets/sergio-arrighi-logo-dark.svg'
             }
           />
 

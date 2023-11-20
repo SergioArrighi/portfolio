@@ -16,9 +16,10 @@ import {
 import type { CarouselItem } from 'chakra-any-carousel';
 import { Carousel, Direction } from 'chakra-any-carousel';
 import type { MouseEvent } from 'react';
-import { useContext, useRef, useState } from 'react';
+import { useContext, useEffect, useRef, useState } from 'react';
 import { RiArrowDownDoubleLine, RiArrowUpDoubleLine } from 'react-icons/ri';
 import ReactMarkdown from 'react-markdown';
+import { useLocation } from 'react-router-dom';
 
 import ImageModal from '~/lib/components/ImageModal';
 import { SkillBadge, SkillPopover } from '~/lib/components/Skill';
@@ -48,6 +49,7 @@ const Project = ({ project }: ProjectProps) => {
   const [isCollapsed, setIsCollapsed] = useState<boolean>(true);
   const [detailsMarkdown, setDetailsMarkdown] = useState<string>('');
   const elementRef = useRef<HTMLDivElement>(null);
+  const location = useLocation();
   const {
     isOpen: isSkillOpen,
     onOpen: onSkillOpen,
@@ -60,6 +62,23 @@ const Project = ({ project }: ProjectProps) => {
   } = useDisclosure();
   const projectStyles: Record<string, SystemStyleObject> =
     useMultiStyleConfig('ProjectItem');
+
+  useEffect(() => {
+    // Extract the anchor from the URL
+    const anchor = location.hash;
+
+    // Scroll to the anchor if it exists
+    if (anchor) {
+      const element = document.querySelector(anchor);
+      if (element) {
+        // Timeout needed for the component to render
+        // without it the scroll doesn't work
+        setTimeout(() => {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }, 100);
+      }
+    }
+  }, [location]);
 
   const getCarouselItems = (): CarouselItem[] => {
     const items = project.images?.map((image: string, index: number) => {
@@ -100,9 +119,13 @@ const Project = ({ project }: ProjectProps) => {
 
   return (
     <>
-      <Card overflow="hidden" sx={projectStyles.card}>
+      <Card
+        id={project.title.replace(' ', '-').toLowerCase()}
+        overflow="hidden"
+        sx={projectStyles.card}
+      >
         <Carousel
-          id="homeCarousel-1"
+          id={`carousel-${project.title}`}
           direction={Direction.RIGHT}
           interval={2000}
           repetitions={1}
