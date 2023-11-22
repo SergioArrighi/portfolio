@@ -23,7 +23,6 @@ const NavigationProvider: React.FC<NavigationProviderProps> = ({
     setFrom(location);
     history.listen((update: Update) => {
       if (update.action === 'POP') {
-        console.log('POP');
         setTo(update.location);
       }
     });
