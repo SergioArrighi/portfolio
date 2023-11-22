@@ -11,6 +11,7 @@ import {
   Text,
   useColorModeValue,
   useDisclosure,
+  useToast,
 } from '@chakra-ui/react';
 import type { ChangeEvent, MouseEvent } from 'react';
 import { useContext, useEffect, useState } from 'react';
@@ -38,11 +39,14 @@ const Skills = (props: PageProps) => {
   const [clickedSkill, setClickedSkill] = useState<SkillItem | undefined>(
     undefined
   );
+  const [showToast, setShowToast] = useState<boolean>(true);
   const {
     isOpen: isSkillProjectsOpen,
     onOpen: onSkillProjectsOpen,
     onClose: onSkillProjectsClose,
   } = useDisclosure();
+  const toast = useToast();
+  const accent = useColorModeValue('accent.light', 'accent.dark');
 
   useEffect(() => {
     if (
@@ -58,6 +62,20 @@ const Skills = (props: PageProps) => {
       onSkillProjectsOpen();
     }
   }, [from, getSkills, onSkillProjectsOpen]);
+
+  useEffect(() => {
+    if (showToast) {
+      toast({
+        id: 'skills',
+        title: 'Tap on the skill to see projects',
+        status: 'info',
+        duration: 2000,
+        isClosable: true,
+        styleConfig: { bg: accent },
+      });
+      setShowToast(false);
+    }
+  }, [accent, showToast, toast]);
 
   const handleSearch = (item: ChangeEvent<HTMLInputElement>) => {
     if (item.nativeEvent.target) {
