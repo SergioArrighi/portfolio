@@ -34,7 +34,7 @@ import SkillProjects from './components/SkillProjects';
 const Skills = (props: PageProps) => {
   const { title } = props;
   const [search, setSearch] = useState<string>('');
-  const { from } = useContext<NavigationBundle>(NavigationContext);
+  const { from, to } = useContext<NavigationBundle>(NavigationContext);
   const { skills, getSkills } = useContext<ProfileBundle>(ProfileContext);
   const [clickedSkill, setClickedSkill] = useState<SkillItem | undefined>(
     undefined
@@ -53,7 +53,8 @@ const Skills = (props: PageProps) => {
       from &&
       from.pathname === '/projects' &&
       from.state &&
-      from.state.skill
+      from.state.skill &&
+      to
     ) {
       const skill = getSkills(
         (item: SkillItem) => item.title === from.state.skill
@@ -61,7 +62,7 @@ const Skills = (props: PageProps) => {
       setClickedSkill(skill);
       onSkillProjectsOpen();
     }
-  }, [from, getSkills, onSkillProjectsOpen]);
+  }, [from, getSkills, onSkillProjectsOpen, to]);
 
   useEffect(() => {
     if (showToast) {

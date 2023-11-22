@@ -6,8 +6,8 @@ import Layout from '~/lib/layout';
 import Routings from '~/lib/router/Routings';
 import { theme } from '~/lib/styles/theme';
 
-import ProfileProvider from './lib/contexts/ProfileProvider';
 import NavigationProvider from './lib/contexts/NavigationProvider';
+import ProfileProvider from './lib/contexts/ProfileProvider';
 
 const App = () => (
   <ChakraProvider theme={theme}>

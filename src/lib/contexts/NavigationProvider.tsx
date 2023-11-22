@@ -22,7 +22,10 @@ const NavigationProvider: React.FC<NavigationProviderProps> = ({
   useEffect(() => {
     setFrom(location);
     history.listen((update: Update) => {
-      if (update.action === 'POP') setTo(update.location);
+      if (update.action === 'POP') {
+        console.log('POP');
+        setTo(update.location);
+      }
     });
   }, [from?.pathname, history, location]);
 
