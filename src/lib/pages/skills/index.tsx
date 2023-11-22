@@ -13,11 +13,13 @@ import {
   useDisclosure,
 } from '@chakra-ui/react';
 import type { ChangeEvent, MouseEvent } from 'react';
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { Fade } from 'react-awesome-reveal';
 
 import PageTitle from '~/lib/components/PageTitle';
 import { Skill } from '~/lib/components/Skill';
+import type { NavigationBundle } from '~/lib/contexts/NavigationContext';
+import { NavigationContext } from '~/lib/contexts/NavigationContext';
 import {
   type SkillData,
   type SkillItem,
@@ -31,17 +33,31 @@ import SkillProjects from './components/SkillProjects';
 const Skills = (props: PageProps) => {
   const { title } = props;
   const [search, setSearch] = useState<string>('');
-  const { skills } = useContext<ProfileBundle>(ProfileContext);
-  const [clickedSkill, setClickedSkill] = useState<SkillItem>({
-    icon: '',
-    title: '',
-    xp: 0,
-  });
+  const { from } = useContext<NavigationBundle>(NavigationContext);
+  const { skills, getSkills } = useContext<ProfileBundle>(ProfileContext);
+  const [clickedSkill, setClickedSkill] = useState<SkillItem | undefined>(
+    undefined
+  );
   const {
     isOpen: isSkillProjectsOpen,
     onOpen: onSkillProjectsOpen,
     onClose: onSkillProjectsClose,
   } = useDisclosure();
+
+  useEffect(() => {
+    if (
+      from &&
+      from.pathname === '/projects' &&
+      from.state &&
+      from.state.skill
+    ) {
+      const skill = getSkills(
+        (item: SkillItem) => item.title === from.state.skill
+      ).at(0);
+      setClickedSkill(skill);
+      onSkillProjectsOpen();
+    }
+  }, [from, getSkills, onSkillProjectsOpen]);
 
   const handleSearch = (item: ChangeEvent<HTMLInputElement>) => {
     if (item.nativeEvent.target) {
@@ -103,10 +119,10 @@ const Skills = (props: PageProps) => {
       <Modal isOpen={isSkillProjectsOpen} onClose={onSkillProjectsClose}>
         <ModalOverlay />
         <ModalContent bg={useColorModeValue('primary.light', 'primary.dark')}>
-          <ModalHeader>{clickedSkill.title} Projects</ModalHeader>
+          <ModalHeader>{clickedSkill?.title} Projects</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
-            <SkillProjects skill={clickedSkill} />
+            <SkillProjects skill={clickedSkill!} />
           </ModalBody>
         </ModalContent>
       </Modal>

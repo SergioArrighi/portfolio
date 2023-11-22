@@ -17,8 +17,7 @@ type ProfileProviderProps = {
   children: React.ReactNode;
 };
 
-const ProfileProvider: React.FC<ProfileProviderProps> = (props) => {
-  const { children } = props;
+const ProfileProvider: React.FC<ProfileProviderProps> = ({ children }) => {
   const [home, setHome] = useState<HomeData>({ name: '', roles: [] });
   const [about, setAbout] = useState<AboutData>({ about: '', imageSrc: '' });
   const [skills, setSkills] = useState<SkillsData>({

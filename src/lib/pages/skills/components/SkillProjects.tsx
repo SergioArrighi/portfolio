@@ -134,6 +134,9 @@ const SkillProjects = ({ skill }: SkillProjectProps) => {
                         .toLowerCase()}`}
                       textDecoration="underline"
                       as={RouterLink}
+                      state={{
+                        skill: skill.title,
+                      }}
                     >
                       {item.title}
                     </Link>

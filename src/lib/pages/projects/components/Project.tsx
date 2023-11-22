@@ -40,11 +40,9 @@ const CarouselCard = ({ image, onClick }: Partial<CarouselItem>) => (
 
 const Project = ({ project }: ProjectProps) => {
   const { getSkills } = useContext<ProfileBundle>(ProfileContext);
-  const [clickedSkill, setClickedSkill] = useState<SkillItem>({
-    icon: '',
-    title: '',
-    xp: 0,
-  });
+  const [clickedSkill, setClickedSkill] = useState<SkillItem | undefined>(
+    undefined
+  );
   const [clickedImageSrc, setClickedImageSrc] = useState<string>('');
   const [isCollapsed, setIsCollapsed] = useState<boolean>(true);
   const [detailsMarkdown, setDetailsMarkdown] = useState<string>('');
@@ -172,7 +170,13 @@ const Project = ({ project }: ProjectProps) => {
         </CardBody>
       </Card>
       <SkillPopover
-        skill={clickedSkill}
+        skill={
+          clickedSkill || {
+            icon: '',
+            title: '',
+            xp: 0,
+          }
+        }
         element={elementRef}
         isOpen={isSkillOpen}
         onClose={onSkillClose}
