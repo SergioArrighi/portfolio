@@ -73,7 +73,7 @@ const Project = ({ project }: ProjectProps) => {
         // without it the scroll doesn't work
         setTimeout(() => {
           element.scrollIntoView({ behavior: 'smooth' });
-        }, 100);
+        }, 200);
       }
     }
   }, [location]);
