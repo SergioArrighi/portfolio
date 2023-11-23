@@ -6,6 +6,7 @@ import {
   ModalOverlay,
   useColorModeValue,
 } from '@chakra-ui/react';
+import { memo } from 'react';
 
 export interface ImageModalProps {
   imageSrc?: string;
@@ -13,7 +14,7 @@ export interface ImageModalProps {
   onClose: () => void;
 }
 
-const ImageModal = ({ imageSrc, isOpen, onClose }: ImageModalProps) => {
+const ImageModal = memo(({ imageSrc, isOpen, onClose }: ImageModalProps) => {
   return (
     <Modal isOpen={isOpen} onClose={onClose} size="full">
       <ModalOverlay />
@@ -25,6 +26,6 @@ const ImageModal = ({ imageSrc, isOpen, onClose }: ImageModalProps) => {
       </ModalContent>
     </Modal>
   );
-};
+});
 
 export default ImageModal;

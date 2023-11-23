@@ -6,7 +6,7 @@ import {
   TabPanel,
   TabPanels,
 } from '@chakra-ui/react';
-import { useContext } from 'react';
+import { memo, useContext } from 'react';
 
 import PageTitle from '~/lib/components/PageTitle';
 import { ProfileContext } from '~/lib/contexts/ProfileContext';
@@ -15,7 +15,7 @@ import type { PageProps } from '~/lib/router/routes';
 
 import Timeline from './components/Timeline';
 
-const Career = (props: PageProps) => {
+const Career = memo((props: PageProps) => {
   const { title } = props;
   const { experiences } = useContext<ProfileBundle>(ProfileContext);
 
@@ -38,6 +38,6 @@ const Career = (props: PageProps) => {
       </Tabs>
     </Container>
   );
-};
+});
 
 export default Career;

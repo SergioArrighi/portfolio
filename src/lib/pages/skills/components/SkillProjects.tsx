@@ -8,7 +8,7 @@ import {
   useToken,
 } from '@chakra-ui/react';
 import _ from 'lodash';
-import { useCallback, useContext } from 'react';
+import { memo, useCallback, useContext } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 import type { BarProps } from 'recharts';
 import {
@@ -50,7 +50,7 @@ const TriangleBar = ({ fill, x, y, width }: BarProps) => {
   );
 };
 
-const SkillProjects = ({ skill }: SkillProjectProps) => {
+const SkillProjects = memo(({ skill }: SkillProjectProps) => {
   const { getProjects } = useContext<ProfileBundle>(ProfileContext);
   const colorMode = useColorMode();
   const [secondaryLight, secondaryDark] = useToken('colors', [
@@ -76,7 +76,7 @@ const SkillProjects = ({ skill }: SkillProjectProps) => {
     );
   }, [getProjects, skill.title]);
 
-  const getChartData = () => {
+  const getChartData = useCallback(() => {
     return Array.from(getProjectsByYear().keys()).map((year: number) => {
       let projectsPerYear = { name: year };
       getProjectsByYear()
@@ -86,7 +86,7 @@ const SkillProjects = ({ skill }: SkillProjectProps) => {
         });
       return projectsPerYear;
     });
-  };
+  }, [getProjectsByYear]);
 
   return (
     <>
@@ -148,6 +148,6 @@ const SkillProjects = ({ skill }: SkillProjectProps) => {
       </Box>
     </>
   );
-};
+});
 
 export default SkillProjects;

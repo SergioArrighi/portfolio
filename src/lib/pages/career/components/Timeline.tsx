@@ -19,7 +19,7 @@ import {
   useDisclosure,
 } from '@chakra-ui/react';
 import type { MouseEvent } from 'react';
-import { useContext, useRef, useState } from 'react';
+import { memo, useContext, useRef, useState } from 'react';
 
 import { SkillBadge, SkillPopover } from '~/lib/components/Skill';
 import { ProfileContext } from '~/lib/contexts/ProfileContext';
@@ -33,7 +33,7 @@ export interface TimelineProps {
   experiences: ExpItem[];
 }
 
-const LineWithDot = (exp: ExpItem) => {
+const LineWithDot = memo((exp: ExpItem) => {
   const { image } = exp;
 
   return (
@@ -72,7 +72,7 @@ const LineWithDot = (exp: ExpItem) => {
       </Box>
     </Flex>
   );
-};
+});
 
 interface TimelineItemProps {
   index: number;
@@ -81,7 +81,7 @@ interface TimelineItemProps {
 
 const isEven = (index: number) => index % 2 === 0;
 
-const TimelineItem = (props: TimelineItemProps) => {
+const TimelineItem = memo((props: TimelineItemProps) => {
   const { index, exp }: { index: number; exp: ExpItem } = props;
   const {
     getSkills,
@@ -204,7 +204,7 @@ const TimelineItem = (props: TimelineItemProps) => {
       />
     </>
   );
-};
+});
 
 const EmptyCard = () => {
   return (
@@ -212,7 +212,7 @@ const EmptyCard = () => {
   );
 };
 
-const Timeline = ({ experiences }: TimelineProps) => {
+const Timeline = memo(({ experiences }: TimelineProps) => {
   const isMobile = useBreakpointValue({ base: true, md: false });
   const isDesktop = useBreakpointValue({ base: false, md: true });
 
@@ -249,6 +249,6 @@ const Timeline = ({ experiences }: TimelineProps) => {
       ))}
     </Box>
   );
-};
+});
 
 export default Timeline;

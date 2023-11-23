@@ -18,6 +18,7 @@ import {
 import { Link as RouterLink } from 'react-router-dom';
 
 import ThemeToggle from './ThemeToggle';
+import { memo } from 'react';
 
 interface NavItem {
   label: string;
@@ -124,7 +125,7 @@ const MobileNav = ({ nav }: MobileNavProps) => {
   );
 };
 
-const Header = () => {
+const Header = memo(() => {
   const nav = useDisclosure();
   const { colorMode } = useColorMode();
 
@@ -193,6 +194,6 @@ const Header = () => {
       </Collapse>
     </Box>
   );
-};
+});
 
 export default Header;

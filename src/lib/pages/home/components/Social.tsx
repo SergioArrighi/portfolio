@@ -1,6 +1,6 @@
 import type { SystemStyleObject } from '@chakra-ui/react';
 import { Box } from '@chakra-ui/react';
-import type { CSSProperties } from 'react';
+import { memo, type CSSProperties } from 'react';
 import { SocialIcon } from 'react-social-icons';
 
 interface Styles {
@@ -36,7 +36,7 @@ const socials: SocialType[] = [
   },
 ];
 
-const Social = () => {
+const Social = memo(() => {
   return (
     <Box sx={styles.socialStyle}>
       {socials
@@ -53,6 +53,6 @@ const Social = () => {
         : null}
     </Box>
   );
-};
+});
 
 export default Social;

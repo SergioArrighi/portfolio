@@ -1,7 +1,7 @@
 /* eslint-disable no-param-reassign */
 import type { SystemStyleObject } from '@chakra-ui/react';
 import { Box, Text, useMultiStyleConfig } from '@chakra-ui/react';
-import { useLayoutEffect, useRef } from 'react';
+import { memo, useLayoutEffect, useRef } from 'react';
 
 export interface ExpBarProps {
   currentExp: number;
@@ -9,7 +9,7 @@ export interface ExpBarProps {
   animate: boolean;
 }
 
-const XpBar = ({ currentExp, maxExp, animate }: ExpBarProps) => {
+const XpBar = memo(({ currentExp, maxExp, animate }: ExpBarProps) => {
   const incrementXp: number = import.meta.env.VITE_XP_BAR_INCREMENT;
   const xpBarRef = useRef<HTMLDivElement>(null);
   const styles: Record<string, SystemStyleObject> =
@@ -51,6 +51,6 @@ const XpBar = ({ currentExp, maxExp, animate }: ExpBarProps) => {
       </Text>
     </Box>
   );
-};
+});
 
 export default XpBar;

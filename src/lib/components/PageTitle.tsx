@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import Typewriter from 'typewriter-effect';
 import '~/App.css';
 
@@ -5,7 +6,7 @@ interface PageTitleProps {
   title: string;
 }
 
-const PageTitle = (props: PageTitleProps) => {
+const PageTitle = memo((props: PageTitleProps) => {
   const { title } = props;
   return (
     <Typewriter
@@ -16,6 +17,6 @@ const PageTitle = (props: PageTitleProps) => {
       }}
     />
   );
-};
+});
 
 export default PageTitle;

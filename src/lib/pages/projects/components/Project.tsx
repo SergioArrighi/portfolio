@@ -16,7 +16,7 @@ import {
 import type { CarouselItem } from 'chakra-any-carousel';
 import { Carousel, Direction } from 'chakra-any-carousel';
 import type { MouseEvent } from 'react';
-import { useContext, useEffect, useRef, useState } from 'react';
+import { memo, useContext, useEffect, useRef, useState } from 'react';
 import { RiArrowDownDoubleLine, RiArrowUpDoubleLine } from 'react-icons/ri';
 import ReactMarkdown from 'react-markdown';
 import { useLocation } from 'react-router-dom';
@@ -38,7 +38,7 @@ const CarouselCard = ({ image, onClick }: Partial<CarouselItem>) => (
   <Image onClick={onClick} src={image?.imageUrl} />
 );
 
-const Project = ({ project }: ProjectProps) => {
+const Project = memo(({ project }: ProjectProps) => {
   const { getSkills } = useContext<ProfileBundle>(ProfileContext);
   const [clickedSkill, setClickedSkill] = useState<SkillItem | undefined>(
     undefined
@@ -188,6 +188,6 @@ const Project = ({ project }: ProjectProps) => {
       />
     </>
   );
-};
+});
 
 export default Project;

@@ -24,7 +24,7 @@ const NavigationProvider: React.FC<NavigationProviderProps> = ({
     history.listen((update: Update) => {
       if (update.action === 'POP') setTo(update.location);
     });
-  }, [from?.pathname, history, location]);
+  }, [history, history.action, location]);
 
   const navigationBundle: NavigationBundle = useMemo(() => {
     return {
