@@ -172,7 +172,7 @@ const TimelineItem = memo((props: TimelineItemProps) => {
             <List>
               {exp.workDescriptions &&
                 exp.workDescriptions.map((item: string) => (
-                  <ListItem display="inline-flex">
+                  <ListItem key={`list-${item}`} display="inline-flex">
                     <ListIcon boxSize="3" as={CheckCircleIcon} />
                     <Text fontSize="xs">{item}</Text>
                   </ListItem>

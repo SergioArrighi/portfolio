@@ -25,12 +25,12 @@ const Career = memo((props: PageProps) => {
       <Tabs>
         <TabList>
           {experiences.map((item: ExpData) => (
-            <Tab>{item.title}</Tab>
+            <Tab key={`exp-tab-${item.title}`}>{item.title}</Tab>
           ))}
         </TabList>
         <TabPanels>
           {experiences.map((item: ExpData) => (
-            <TabPanel>
+            <TabPanel key={`exp-tab-pan-${item.title}`}>
               <Timeline experiences={item.items} />
             </TabPanel>
           ))}

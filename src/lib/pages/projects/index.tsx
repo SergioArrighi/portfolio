@@ -19,7 +19,7 @@ const Projects = ({ title }: PageProps) => {
         {projects && (
           <VStack>
             {projects.map((project) => (
-              <Project project={project} />
+              <Project key={`proj-${project.title}`} project={project} />
             ))}
           </VStack>
         )}

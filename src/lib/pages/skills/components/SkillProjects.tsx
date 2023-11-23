@@ -127,7 +127,7 @@ const SkillProjects = memo(({ skill }: SkillProjectProps) => {
               {getProjectsByYear()
                 .get(year)
                 ?.map((item: ProjectItem) => (
-                  <Box>
+                  <Box key={`proj-${item.title}`}>
                     <Link
                       to={`/projects#${item.title
                         .replace(' ', '-')

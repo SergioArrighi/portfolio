@@ -162,7 +162,11 @@ const Project = memo(({ project }: ProjectProps) => {
                 {getSkills((item: SkillItem) =>
                   project.skills!.includes(item.title)
                 ).map((item: SkillItem) => (
-                  <SkillBadge skill={item} handleClick={handleSkillClick} />
+                  <SkillBadge
+                    key={`badge-${item.title}`}
+                    skill={item}
+                    handleClick={handleSkillClick}
+                  />
                 ))}
               </SimpleGrid>
             </HStack>

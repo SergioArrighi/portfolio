@@ -85,8 +85,6 @@ const MobileNavItem = ({ label, href, nav }: NavItem) => (
   <Stack spacing={4}>
     <Flex
       py={2}
-      as={RouterLink}
-      to={href ?? '#'}
       justify="space-between"
       align="center"
       _hover={{
