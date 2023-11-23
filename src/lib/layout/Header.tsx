@@ -15,10 +15,10 @@ import {
   useColorModeValue,
   useDisclosure,
 } from '@chakra-ui/react';
+import { memo } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 
 import ThemeToggle from './ThemeToggle';
-import { memo } from 'react';
 
 interface NavItem {
   label: string;

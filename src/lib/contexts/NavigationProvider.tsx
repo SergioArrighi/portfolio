@@ -11,20 +11,27 @@ type NavigationProviderProps = {
   children: React.ReactNode;
 };
 
+const history = createBrowserHistory();
+
 const NavigationProvider: React.FC<NavigationProviderProps> = ({
   children,
 }: NavigationProviderProps) => {
   const [from, setFrom] = useState<Location | undefined>(undefined);
   const [to, setTo] = useState<Location | undefined>(undefined);
   const location = useLocation();
-  const history = createBrowserHistory();
 
   useEffect(() => {
-    setFrom(location);
     history.listen((update: Update) => {
       if (update.action === 'POP') setTo(update.location);
     });
-  }, [history, history.action, location]);
+    return () => setTo(undefined);
+  }, []);
+
+  useEffect(() => {
+    setFrom(location);
+
+    return () => setFrom(undefined);
+  }, [location]);
 
   const navigationBundle: NavigationBundle = useMemo(() => {
     return {
