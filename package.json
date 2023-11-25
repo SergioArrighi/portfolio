@@ -28,7 +28,7 @@
     "@emotion/styled": "^11.11.0",
     "@fontsource/plus-jakarta-sans": "^5.0.17",
     "@types/lodash": "^4.14.201",
-    "chakra-any-carousel": "^1.0.5",
+    "chakra-any-carousel": "^1.0.8",
     "framer-motion": "^10.16.4",
     "history": "^5.3.0",
     "lodash": "^4.17.21",
