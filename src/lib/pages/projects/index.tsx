@@ -19,7 +19,7 @@ const Projects = ({ title }: PageProps) => {
 
   useEffect(() => {
     sendToast({
-      id: 'projects',
+      id: 'badge',
       title: 'Tap on the skill badges to check experience',
       status: 'info',
       duration: 2000,

@@ -24,7 +24,7 @@ const Career = memo((props: PageProps) => {
 
   useEffect(() => {
     sendToast({
-      id: 'career',
+      id: 'badge',
       title: 'Tap on the skill badges to check experience',
       status: 'info',
       duration: 2000,
