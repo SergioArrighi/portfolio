@@ -102,6 +102,11 @@
             "icon": "/images/skills/arduino.svg",
             "title": "Arduino",
             "xp": 40
+          },
+          {
+            "icon": "/images/skills/rabbitmq.svg",
+            "title": "RabbitMQ",
+            "xp": 40
           }
         ]
       },
