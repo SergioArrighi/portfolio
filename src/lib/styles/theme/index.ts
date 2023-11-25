@@ -55,7 +55,7 @@ const xpHelpers = createMultiStyleConfigHelpers(['bar', 'fill', 'text']);
 const XpBar = xpHelpers.defineMultiStyleConfig({
   baseStyle: {
     bar: {
-      width: '12vh',
+      width: '100%',
       height: '2.5vh',
       backgroundColor: '#33333342',
       border: '1px solid #000',
