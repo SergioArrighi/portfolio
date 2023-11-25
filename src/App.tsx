@@ -7,17 +7,20 @@ import Routings from '~/lib/router/Routings';
 import { theme } from '~/lib/styles/theme';
 
 import NavigationProvider from './lib/contexts/NavigationProvider';
+import NotificationProvider from './lib/contexts/NotificationProvider';
 import ProfileProvider from './lib/contexts/ProfileProvider';
 
 const App = () => (
   <ChakraProvider theme={theme}>
     <Router>
       <NavigationProvider>
-        <ProfileProvider>
-          <Layout>
-            <Routings />
-          </Layout>
-        </ProfileProvider>
+        <NotificationProvider>
+          <ProfileProvider>
+            <Layout>
+              <Routings />
+            </Layout>
+          </ProfileProvider>
+        </NotificationProvider>
       </NavigationProvider>
     </Router>
   </ChakraProvider>

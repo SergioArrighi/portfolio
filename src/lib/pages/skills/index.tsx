@@ -11,7 +11,6 @@ import {
   Text,
   useColorModeValue,
   useDisclosure,
-  useToast,
 } from '@chakra-ui/react';
 import type { ChangeEvent, MouseEvent } from 'react';
 import { useContext, useEffect, useState } from 'react';
@@ -21,6 +20,10 @@ import PageTitle from '~/lib/components/PageTitle';
 import { Skill } from '~/lib/components/Skill';
 import type { NavigationBundle } from '~/lib/contexts/NavigationContext';
 import { NavigationContext } from '~/lib/contexts/NavigationContext';
+import {
+  NotificationContext,
+  type NotificationBundle,
+} from '~/lib/contexts/NotificationContext';
 import {
   type SkillData,
   type SkillItem,
@@ -35,6 +38,7 @@ const Skills = (props: PageProps) => {
   const { title } = props;
   const [search, setSearch] = useState<string>('');
   const { from, to } = useContext<NavigationBundle>(NavigationContext);
+  const { sendToast } = useContext<NotificationBundle>(NotificationContext);
   const { skills, getSkills } = useContext<ProfileBundle>(ProfileContext);
   const [clickedSkill, setClickedSkill] = useState<SkillItem | undefined>(
     undefined
@@ -44,7 +48,6 @@ const Skills = (props: PageProps) => {
     onOpen: onSkillProjectsOpen,
     onClose: onSkillProjectsClose,
   } = useDisclosure();
-  const toast = useToast();
 
   useEffect(() => {
     if (
@@ -63,14 +66,14 @@ const Skills = (props: PageProps) => {
   }, [from, getSkills, onSkillProjectsOpen, to]);
 
   useEffect(() => {
-    toast({
+    sendToast({
       id: 'skills',
       title: 'Tap on the skill to see projects',
       status: 'info',
       duration: 2000,
       isClosable: true,
     });
-  }, [toast]);
+  }, [sendToast]);
 
   const handleSearch = (item: ChangeEvent<HTMLInputElement>) => {
     if (item.nativeEvent.target) {
