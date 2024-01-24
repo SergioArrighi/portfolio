@@ -5,26 +5,6 @@ import { config } from './config';
 
 const transparentBg = 'rgba(0, 0, 0, 0.25)';
 
-const aboutHelpers = createMultiStyleConfigHelpers(['text', 'image']);
-const About = aboutHelpers.defineMultiStyleConfig({
-  baseStyle: {
-    text: {
-      margin: 3,
-      flexDirection: 'column',
-      whiteSpace: 'pre-wrap',
-      textAlign: 'left',
-      fontSize: '1.2em',
-      fontWeight: 500,
-    },
-    image: {
-      margin: 10,
-      justifyContent: 'center',
-      alignItems: 'center',
-      display: 'flex',
-    },
-  },
-});
-
 const skillsHelpers = createMultiStyleConfigHelpers(['skill', 'icon', 'badge']);
 const Skill = skillsHelpers.defineMultiStyleConfig({
   baseStyle: {
@@ -123,7 +103,6 @@ export const theme = extendTheme({
     body: 'Plus Jakarta Sans, sans-serif',
   },
   components: {
-    About,
     Skill,
     XpBar,
     TimelineItem,

@@ -1,14 +1,13 @@
 {
   "home": {
     "name": "Sergio Arrighi",
-    "roles": ["Some", "Random", "Bullshit"]
+    "roles": ["Creative", "Software", "Design"]
   },
   "about": {
-    "about": " I am a Software development specialist since 2008. Deeply interested and involved in the Client's business. I try to help beyond just software development. My consulting and entrepreneurial experience help me to advise on a call on the delivery roadmap, complexity and risks and help to craft the best solution fit for your idea. I'm flexible, extendable, and ready to solve all kinds of challenges for your business using cutting-edge web technologies. \n\n Top 5 reasons why you should work with me: \n ✓ Expert level \n ✓ Less hassle, more work \n ✓ Result oriented \n ✓ Budget-friendly \n\n Let's discuss how my attitude and expertise can contribute to your project. Just drop me a line!",
     "imageSrc": "/images/about/profile.png"
   },
   "skills": {
-    "intro": "I love to learn new things and xperiment with new technologies.\nThese are some of the major languages, technologies, tools and platforms I have worked with:",
+    "intro": "Browse the list or utilize the search bar to locate the skills you are seeking. The self-evaluated level is gauged in comparison to proficiency with Java language and is focused on the last five years.",
     "items": [
       {
         "title": "Languages",
@@ -92,6 +91,11 @@
             "icon": "/images/skills/hardhat.svg",
             "title": "Hardhat",
             "xp": 60
+          },
+          {
+            "icon": "/images/skills/immutablex.svg",
+            "title": "ImmutableX",
+            "xp": 50
           },
           {
             "icon": "/images/skills/typechain.svg",
@@ -262,24 +266,50 @@
           "workType": "Employed",
           "workDescriptions": [
               "Agile and SAFe team coordination with high turnover",
-              "Production ready functional feature for digital commerce products",
+              "Production ready functional features for digital commerce products",
               "Creation of internal tools for quality and test automation"
           ],
           "start": "09/2011",
           "image": "/images/experiences/amadeus.svg",
-          "skills": ["Java", "Spring", "Typescript", "Javascript", "NodeJS"]
+          "skills": ["Java", "Spring", "Typescript", "Javascript", "NodeJS", "Podman", "Kubernetes", "Helm", "Jenkins", "Postman", "OpenAPI"]
         },
         {
-          "title": "Half Stack Developer",
-          "subtitle": "XYZ Ltd",
-          "workType": "Self-Employed",
+          "title": "SportDeFi",
+          "subtitle": "Web3 NFT Advisor & Full Stack Developer",
+          "workType": "Freelance",
           "workDescriptions": [
-              "Built reusable components that can be used across multiple pages/features as well as built reusable libraries of functions or utilities that are commonly needed throughout the application.",
-              "Experience with high-performance web delivery, cloud (AWS) and DevOps"
+              "Achievement 1",
+              "Achievement 2"
           ],
-          "start": "09/2011",
-          "end" : "01/2024",
-          "skills": ["NodeJS", "Java"]
+          "start": "03/2023",
+          "image": "/images/experiences/sportdefi.svg",
+          "skills": ["Typescript", "NodeJS", "NestJS", "React", "ChakraUI", "Ethereum", "Solidity", "Hardhat", "ImmutableX", "OpenAPI", "Typechain"]
+        },
+        {
+          "title": "ASA Plastici",
+          "subtitle": "Full Stack Developer",
+          "workType": "Freelance",
+          "workDescriptions": [
+              "Achievement 1",
+              "Achievement 2"
+          ],
+          "start": "11/2021",
+          "end" : "11/2022",
+          "image": "/images/experiences/asaplastici.svg",
+          "skills": ["Typescript", "C++", "NodeJS", "NestJS", "React", "OpenAPI", "RabbitMQ", "Kubernetes", "Docker", "Helm", "Arduino"]
+        },
+        {
+          "title": "VainGlory - Super Evil Mega Corp",
+          "subtitle": "Community Manager",
+          "workType": "Freelance",
+          "workDescriptions": [
+              "Achievement 1",
+              "Achievement 2"
+          ],
+          "start": "11/2014",
+          "end" : "11/2018",
+          "image": "/images/experiences/vainglory.svg",
+          "skills": []
         }
       ]
     },

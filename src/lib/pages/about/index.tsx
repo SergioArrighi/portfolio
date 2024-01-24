@@ -1,14 +1,7 @@
-import type { SystemStyleObject } from '@chakra-ui/react';
-import {
-  Avatar,
-  Box,
-  HStack,
-  Text,
-  VStack,
-  useMultiStyleConfig,
-} from '@chakra-ui/react';
-import { useContext } from 'react';
+import { Avatar, Box, HStack, VStack } from '@chakra-ui/react';
+import { useContext, useEffect, useState } from 'react';
 import { Fade } from 'react-awesome-reveal';
+import ReactMarkdown from 'react-markdown';
 
 import PageTitle from '~/lib/components/PageTitle';
 import {
@@ -20,8 +13,17 @@ import type { PageProps } from '~/lib/router/routes';
 const About = (props: PageProps) => {
   const { title } = props;
   const { about } = useContext<ProfileBundle>(ProfileContext);
-  const styles: Record<string, SystemStyleObject> =
-    useMultiStyleConfig('About');
+  const [aboutMarkdown, setAboutMarkdown] = useState<string>('');
+
+  useEffect(() => {
+    if (aboutMarkdown === '') {
+      fetch(`/profile/about.md`, {
+        method: 'GET',
+      })
+        .then(async (res) => setAboutMarkdown(await res.text()))
+        .catch((err) => err);
+    }
+  }, [aboutMarkdown]);
 
   return (
     <>
@@ -33,9 +35,9 @@ const About = (props: PageProps) => {
               <HStack>
                 <Avatar size="2xl" src={about.imageSrc} boxShadow={2} />
               </HStack>
-              <HStack>
-                <Text sx={styles.text}>{about.about}</Text>
-              </HStack>
+              <VStack className="markdown">
+                <ReactMarkdown>{aboutMarkdown}</ReactMarkdown>
+              </VStack>
             </VStack>
           </Box>
         </Fade>
