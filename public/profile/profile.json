@@ -292,7 +292,7 @@
           "workType": "Freelance",
           "workDescriptions": [
               "Complex system for smart desk reservation with business rules and power consumption tracking",
-              "Creationg of a NestJS REST API over a MongoDB, a feature rich MaterialUI React graphic interface, a RabbitMQ broken and feed backend and a circuit for authentication and power lines activation with associated firmware",
+              "NestJS REST API over a MongoDB, rich React UI, RabbitMQ broker with feed backend, circuit and C++ firmware for authentication and power lines activation",
               "Kuberneted helm based production ready configuration"
           ],
           "start": "11/2021",
