@@ -278,8 +278,9 @@
           "subtitle": "Web3 NFT Advisor & Full Stack Developer",
           "workType": "Freelance",
           "workDescriptions": [
-              "Achievement 1",
-              "Achievement 2"
+              "Collectibles NFT card Solidity contract compatible with ImmutableX zkEVM network",
+              "NFT market place React PWA (progressive web app)",
+              "NestJS oracle backend with dynamic metadata creation algorithm"
           ],
           "start": "03/2023",
           "image": "/images/experiences/sportdefi.svg",
@@ -290,8 +291,9 @@
           "subtitle": "Full Stack Developer",
           "workType": "Freelance",
           "workDescriptions": [
-              "Achievement 1",
-              "Achievement 2"
+              "Complex system for smart desk reservation with business rules and power consumption tracking",
+              "Creationg of a NestJS REST API over a MongoDB, a feature rich MaterialUI React graphic interface, a RabbitMQ broken and feed backend and a circuit for authentication and power lines activation with associated firmware",
+              "Kuberneted helm based production ready configuration"
           ],
           "start": "11/2021",
           "end" : "11/2022",
