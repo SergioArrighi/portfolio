@@ -271,7 +271,7 @@
           ],
           "start": "09/2011",
           "image": "/images/experiences/amadeus.svg",
-          "skills": ["Java", "Maven", "Spring", "Typescript", "Javascript", "NodeJS", "Podman", "Kubernetes", "Helm", "Jenkins", "Postman", "OpenAPI0, "Git", "Jira", "Jenkins", "Postman"]
+          "skills": ["Java", "Maven", "Spring", "Typescript", "Javascript", "NodeJS", "Podman", "Kubernetes", "Helm", "Jenkins", "Postman", "OpenAPI", "Git", "Jira", "Jenkins", "Postman"]
         },
         {
           "title": "SportDeFi",
