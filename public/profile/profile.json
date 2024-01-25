@@ -271,7 +271,7 @@
           ],
           "start": "09/2011",
           "image": "/images/experiences/amadeus.svg",
-          "skills": ["Java", "Spring", "Typescript", "Javascript", "NodeJS", "Podman", "Kubernetes", "Helm", "Jenkins", "Postman", "OpenAPI"]
+          "skills": ["Java", "Maven", "Spring", "Typescript", "Javascript", "NodeJS", "Podman", "Kubernetes", "Helm", "Jenkins", "Postman", "OpenAPI0, "Git", "Jira", "Jenkins", "Postman"]
         },
         {
           "title": "SportDeFi",
@@ -314,6 +314,19 @@
           "end" : "11/2018",
           "image": "/images/experiences/vainglory.svg",
           "skills": []
+        },
+        {
+          "title": "CESI - Italian electrotechnical research center",
+          "subtitle": "Software developer",
+          "workType": "Contractor",
+          "workDescriptions": [
+              "Development and maintenance of the power network monitoring application",
+              "Modelization of the power network components"
+          ],
+          "start": "03/2010",
+          "end" : "08/2011",
+          "image": "/images/experiences/cesi.svg",
+          "skills": ["Java", "Spring", "Maven", "MySQL"]
         }
       ]
     },
