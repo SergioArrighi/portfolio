@@ -263,7 +263,7 @@
         {
           "title": "Amadeus",
           "subtitle": "Senior Java Developer & Scrum Master",
-          "workType": "Employed",
+          "workType": "Employee",
           "workDescriptions": [
               "Agile and SAFe team coordination with high turnover",
               "Production ready functional features for digital commerce products",
@@ -316,16 +316,31 @@
           "skills": []
         },
         {
-          "title": "CESI - Italian electrotechnical research center",
+          "title": "TXT Group",
           "subtitle": "Software developer",
           "workType": "Contractor",
           "workDescriptions": [
+              "Mission at CESI - Italian electrothecnical research center",
               "Development and maintenance of the power network monitoring application",
               "Modelization of the power network components"
           ],
           "start": "03/2010",
           "end" : "08/2011",
-          "image": "/images/experiences/cesi.svg",
+          "image": "/images/experiences/txt.svg",
+          "skills": ["Java", "Spring", "Maven", "MySQL"]
+        },
+        {
+          "title": "IMIN Holding",
+          "subtitle": "Software developer",
+          "workType": "Employee",
+          "workDescriptions": [
+              "Development of IADI platform, a SMS search engine",
+              "Rebuiding of the platform framework previously owned by a contracting company and integration with Ericsson SMS service",
+              "Collaboration with Nuance designing a grammar to extract commands from free text"
+          ],
+          "start": "03/2010",
+          "end" : "08/2011",
+          "image": "/images/experiences/txt.svg",
           "skills": ["Java", "Spring", "Maven", "MySQL"]
         }
       ]
