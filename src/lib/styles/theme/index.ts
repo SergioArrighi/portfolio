@@ -90,6 +90,20 @@ const Carousel = carouselHelpers.defineMultiStyleConfig({
   },
 });
 
+const assistantHelper = createMultiStyleConfigHelpers(['button']);
+const Assistant = assistantHelper.defineMultiStyleConfig({
+  baseStyle: {
+    button: {
+      position: 'fixed',
+      bottom: '20px',
+      right: '20px',
+      color: 'white',
+      border: 'none',
+      cursor: 'pointer',
+    },
+  },
+});
+
 export const theme = extendTheme({
   styles: {
     global: (props: StyleFunctionProps) => ({
@@ -108,6 +122,7 @@ export const theme = extendTheme({
     TimelineItem,
     ProjectItem,
     Carousel,
+    Assistant,
   },
   colors: {
     primary: {
