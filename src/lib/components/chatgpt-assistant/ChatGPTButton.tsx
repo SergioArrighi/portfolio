@@ -1,10 +1,11 @@
+import type { SystemStyleObject } from '@chakra-ui/react';
 import {
   IconButton,
-  SystemStyleObject,
   Tooltip,
   useColorModeValue,
   useMultiStyleConfig,
 } from '@chakra-ui/react';
+
 import ChatGPTIcon from './ChatGPTIcon';
 
 export interface ChatGPTButtonProps {
@@ -18,7 +19,7 @@ const ChatGPTButton = ({ onOpen }: ChatGPTButtonProps) => {
     <Tooltip label="Ask about me">
       <IconButton
         sx={styles.button}
-        isRound={true}
+        isRound
         size="lg"
         variant="solid"
         backgroundColor={useColorModeValue('accent.light', 'accent.dark')}

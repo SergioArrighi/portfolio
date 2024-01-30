@@ -1,4 +1,3 @@
-import { ChangeEvent, useState } from 'react';
 import {
   Box,
   Button,
@@ -15,6 +14,8 @@ import {
   useColorModeValue,
 } from '@chakra-ui/react';
 import { nanoid } from 'nanoid';
+import type { ChangeEvent } from 'react';
+import { useState } from 'react';
 
 export interface ChatGPTModalProps {
   isOpen: boolean;
@@ -56,13 +57,11 @@ const ChatGPTModal = ({ isOpen, onClose }: ChatGPTModalProps) => {
     });
     if (result.status === 200) {
       const answer: Message = await result.json();
-      console.log(answer);
       setMessages((prevMessages) => [
         ...prevMessages,
         { ...answer, sender: Sender.Assistant },
       ]);
     }
-    console.log(messages);
   };
 
   return (
