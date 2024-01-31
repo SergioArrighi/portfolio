@@ -28,11 +28,15 @@ interface SocialType {
 const socials: SocialType[] = [
   {
     network: 'github',
-    href: 'https://github.com/codeRockStar1992',
+    href: 'https://github.com/SergioArrighi',
+  },
+  {
+    network: 'medium',
+    href: 'https://medium.com/@sergio.arrighi',
   },
   {
     network: 'email',
-    href: 'mailto:19920109johnolson@gmail.com',
+    href: 'sergio.arrighi@gmail.com',
   },
 ];
 
