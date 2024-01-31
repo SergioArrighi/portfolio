@@ -49,6 +49,8 @@ const ChatGPTModal = ({ isOpen, onClose }: ChatGPTModalProps) => {
   const handleQuestionChange = (item: ChangeEvent<HTMLTextAreaElement>) =>
     setQuestion(item.target.value);
 
+  const clearQuestion = () => setQuestion('');
+
   const onScrollEvent = (event: React.UIEvent<HTMLElement>) => {
     const target = event.target as HTMLElement;
     setTop(target.scrollTop);
@@ -66,7 +68,7 @@ const ChatGPTModal = ({ isOpen, onClose }: ChatGPTModalProps) => {
       },
     ]);
     const encodedQuestion = encodeURIComponent(question);
-    setQuestion('');
+    clearQuestion();
     const gptUrl = `${
       import.meta.env.VITE_GPT_BRIDGE_URL
     }/?question=${encodedQuestion}${
@@ -122,7 +124,7 @@ const ChatGPTModal = ({ isOpen, onClose }: ChatGPTModalProps) => {
                         }
                       />
                     </Box>
-                    {message.sender && (
+                    {message.sender !== undefined && (
                       <Box>
                         <Text fontWeight="bold">
                           {Sender[message.sender.valueOf()]}
@@ -164,6 +166,7 @@ const ChatGPTModal = ({ isOpen, onClose }: ChatGPTModalProps) => {
               <Textarea
                 value={question}
                 onChange={handleQuestionChange}
+                onClick={clearQuestion}
                 resize="none"
               />
             </HStack>

@@ -1,8 +1,10 @@
 import { Box, Flex } from '@chakra-ui/react';
 import type { ReactNode } from 'react';
+
+import ChatGPTAssistant from '../components/chatgpt-assistant/ChatGTPAssistant';
+
 import Header from './Header';
 import Meta from './Meta';
-import ChatGPTAssistant from '../components/chatgpt-assistant/ChatGTPAssistant';
 
 type LayoutProps = {
   children: ReactNode;
