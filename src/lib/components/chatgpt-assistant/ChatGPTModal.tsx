@@ -1,4 +1,3 @@
-import type { ChangeEvent } from 'react';
 import {
   Avatar,
   Box,
@@ -19,6 +18,7 @@ import {
   useColorModeValue,
 } from '@chakra-ui/react';
 import { nanoid } from 'nanoid';
+import type { ChangeEvent } from 'react';
 import { useState } from 'react';
 
 export interface ChatGPTModalProps {
@@ -44,7 +44,7 @@ const ChatGPTModal = ({ isOpen, onClose }: ChatGPTModalProps) => {
   const [messages, setMessages] = useState<Message[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
   const [top, setTop] = useState<number>(0);
-  const gptBridgeUrl = 'https://assistant.se-are.workers.dev';
+  const accentColor = useColorModeValue('accent.light', 'accent.dark');
 
   const handleQuestionChange = (item: ChangeEvent<HTMLTextAreaElement>) =>
     setQuestion(item.target.value);
@@ -67,10 +67,10 @@ const ChatGPTModal = ({ isOpen, onClose }: ChatGPTModalProps) => {
     ]);
     const encodedQuestion = encodeURIComponent(question);
     setQuestion('');
-    const gptUrl = `${gptBridgeUrl}/?question=${encodedQuestion}${
-      thread
-        ? `&thread=${encodeURIComponent('thread_JiZfkIutdg7VVPXaaU1MvF2e')}`
-        : ''
+    const gptUrl = `${
+      import.meta.env.VITE_GPT_BRIDGE_URL
+    }/?question=${encodedQuestion}${
+      thread ? `&thread=${encodeURIComponent(thread)}` : ''
     }`;
     const result = await fetch(gptUrl, {
       method: 'GET',
@@ -122,11 +122,13 @@ const ChatGPTModal = ({ isOpen, onClose }: ChatGPTModalProps) => {
                         }
                       />
                     </Box>
-                    <Box>
-                      <Text fontWeight="bold">
-                        {Sender[message.sender?.valueOf()!]}
-                      </Text>
-                    </Box>
+                    {message.sender && (
+                      <Box>
+                        <Text fontWeight="bold">
+                          {Sender[message.sender.valueOf()]}
+                        </Text>
+                      </Box>
+                    )}
                     <Box />
                     <Box>
                       <Text>{message.text}</Text>
@@ -152,13 +154,7 @@ const ChatGPTModal = ({ isOpen, onClose }: ChatGPTModalProps) => {
                       justifyContent="center"
                       minH={80}
                     >
-                      <Spinner
-                        size="xl"
-                        color={useColorModeValue(
-                          'secondary.light',
-                          'secondary.dark'
-                        )}
-                      />
+                      <Spinner size="xl" color={accentColor} />
                     </Center>
                   </Box>
                 )}
