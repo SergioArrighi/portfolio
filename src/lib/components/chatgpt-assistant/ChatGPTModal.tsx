@@ -1,6 +1,10 @@
+import type { ChangeEvent } from 'react';
 import {
+  Avatar,
   Box,
   Button,
+  Center,
+  Grid,
   HStack,
   Modal,
   ModalBody,
@@ -8,13 +12,13 @@ import {
   ModalContent,
   ModalHeader,
   ModalOverlay,
+  Spinner,
   Text,
   Textarea,
   VStack,
   useColorModeValue,
 } from '@chakra-ui/react';
 import { nanoid } from 'nanoid';
-import type { ChangeEvent } from 'react';
 import { useState } from 'react';
 
 export interface ChatGPTModalProps {
@@ -29,39 +33,57 @@ enum Sender {
 
 type Message = {
   id: string;
+  thread: string;
   text: string;
   sender?: Sender;
 };
 
 const ChatGPTModal = ({ isOpen, onClose }: ChatGPTModalProps) => {
   const [question, setQuestion] = useState<string>('Ask me anything...');
+  const [thread, setThread] = useState<string | undefined>(undefined);
   const [messages, setMessages] = useState<Message[]>([]);
+  const [loading, setLoading] = useState<boolean>(false);
+  const [top, setTop] = useState<number>(0);
   const gptBridgeUrl = 'https://assistant.se-are.workers.dev';
 
   const handleQuestionChange = (item: ChangeEvent<HTMLTextAreaElement>) =>
     setQuestion(item.target.value);
 
-  const clearQuestion = () => setQuestion('');
+  const onScrollEvent = (event: React.UIEvent<HTMLElement>) => {
+    const target = event.target as HTMLElement;
+    setTop(target.scrollTop);
+  };
 
   const callGPTBridge = async () => {
+    setLoading(true);
     setMessages((prevMessages) => [
       ...prevMessages,
       {
         id: nanoid(),
+        thread: '',
         text: question,
         sender: Sender.You,
       },
     ]);
-    const result = await fetch(`${gptBridgeUrl}/?question=What%20are%20you`, {
+    const encodedQuestion = encodeURIComponent(question);
+    setQuestion('');
+    const gptUrl = `${gptBridgeUrl}/?question=${encodedQuestion}${
+      thread
+        ? `&thread=${encodeURIComponent('thread_JiZfkIutdg7VVPXaaU1MvF2e')}`
+        : ''
+    }`;
+    const result = await fetch(gptUrl, {
       method: 'GET',
     });
     if (result.status === 200) {
       const answer: Message = await result.json();
+      setThread(answer.thread);
       setMessages((prevMessages) => [
         ...prevMessages,
         { ...answer, sender: Sender.Assistant },
       ]);
     }
+    setLoading(false);
   };
 
   return (
@@ -73,26 +95,86 @@ const ChatGPTModal = ({ isOpen, onClose }: ChatGPTModalProps) => {
         <ModalBody>
           <VStack>
             <HStack width="full">
-              <Box>
-                <VStack>
-                  {messages.map((message: Message) => (
-                    <HStack key={message.id}>
+              <Box
+                width="full"
+                height="50vh"
+                overflowY={loading ? 'hidden' : 'scroll'}
+                p={2}
+                position="relative"
+                onScroll={onScrollEvent}
+              >
+                {messages.map((message: Message) => (
+                  <Grid
+                    key={message.id}
+                    mt="2"
+                    width="100%"
+                    templateColumns="min-content auto"
+                    gap={4}
+                    alignItems="center"
+                  >
+                    <Box>
+                      <Avatar
+                        size="sm"
+                        src={
+                          message.sender === Sender.Assistant
+                            ? '/assets/chatgpt.svg'
+                            : ''
+                        }
+                      />
+                    </Box>
+                    <Box>
+                      <Text fontWeight="bold">
+                        {Sender[message.sender?.valueOf()!]}
+                      </Text>
+                    </Box>
+                    <Box />
+                    <Box>
                       <Text>{message.text}</Text>
-                    </HStack>
-                  ))}
-                </VStack>
+                    </Box>
+                  </Grid>
+                ))}
+                {loading && (
+                  <Box
+                    top={0 + top}
+                    left={0}
+                    w="full"
+                    h="full"
+                    bg="blackAlpha.500"
+                    opacity={0.5}
+                    bgBlendMode="multiply"
+                    position="absolute"
+                  >
+                    <Center
+                      position="relative"
+                      zIndex={1}
+                      textAlign="center"
+                      display="flex"
+                      justifyContent="center"
+                      minH={80}
+                    >
+                      <Spinner
+                        size="xl"
+                        color={useColorModeValue(
+                          'secondary.light',
+                          'secondary.dark'
+                        )}
+                      />
+                    </Center>
+                  </Box>
+                )}
               </Box>
             </HStack>
             <HStack width="full">
               <Textarea
                 value={question}
-                defaultValue={question}
-                onClick={clearQuestion}
                 onChange={handleQuestionChange}
+                resize="none"
               />
             </HStack>
             <HStack>
-              <Button onClick={callGPTBridge}>Ask</Button>
+              <Button isActive={!loading} onClick={callGPTBridge}>
+                Ask
+              </Button>
             </HStack>
           </VStack>
         </ModalBody>
