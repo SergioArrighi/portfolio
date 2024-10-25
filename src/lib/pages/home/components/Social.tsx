@@ -27,6 +27,10 @@ interface SocialType {
 
 const socials: SocialType[] = [
   {
+    network: 'linkedin',
+    href: 'https://linkedin.com/in/sergio-arrighi-34a96b27',
+  },
+  {
     network: 'github',
     href: 'https://github.com/SergioArrighi',
   },

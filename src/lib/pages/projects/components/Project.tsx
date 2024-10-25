@@ -122,15 +122,17 @@ const Project = memo(({ project }: ProjectProps) => {
         overflow="hidden"
         sx={projectStyles.card}
       >
-        <Carousel
-          id={`carousel-${project.title}`}
-          direction={Direction.RIGHT}
-          interval={2000}
-          repetitions={1}
-          items={getCarouselItems()}
-        >
-          <CarouselCard />
-        </Carousel>
+        {project.images && project.images?.length > 0 && (
+          <Carousel
+            id={`carousel-${project.title}`}
+            direction={Direction.RIGHT}
+            interval={2000}
+            repetitions={1}
+            items={getCarouselItems()}
+          >
+            <CarouselCard />
+          </Carousel>
+        )}
         <CardBody p="6">
           <VStack align="start" spacing={2}>
             <chakra.h1 fontSize="xl" lineHeight={1.2} fontWeight="bold">

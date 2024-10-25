@@ -22,7 +22,7 @@ const Projects = ({ title }: PageProps) => {
       id: 'badge',
       title: 'Tap on the skill badges to check experience',
       status: 'info',
-      duration: 2000,
+      duration: 5000,
       isClosable: true,
     });
   }, [sendToast]);

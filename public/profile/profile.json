@@ -384,13 +384,18 @@
       "title": "Worker",
       "description": "A system for work desks reservation and activation",
       "yearStart": 2021,
-      "yearEnd": 2022,
+      "yearEnd": 2024,
       "links": [
       ],
       "images" : [
-        "/images/projects/worker/worker-1.png",
-        "/images/projects/worker/worker-2.png",
-        "/images/projects/worker/worker-3.png"
+        "/images/projects/worker/worker-calendar.png",
+        "/images/projects/worker/worker-preference.png",
+        "/images/projects/worker/worker-energy.png",
+        "/images/projects/worker/worker-network.png",
+        "/images/projects/worker/worker-map.png",
+        "/images/projects/worker/worker-firmware.png",
+        "/images/projects/worker/worker-rabbitmq.png",
+        "/images/projects/worker/worker-kie.png"
       ],
       "skills" : [
         "Node",
@@ -403,22 +408,29 @@
       ]
     },
     {
-      "title": "Project2",
-      "description": "A system for work desks reservation and activation",
+      "title": "Immutable Market Place",
+      "description": "A NFT collectibles market place on Immutable zkEVM network",
       "yearStart": 2022,
       "yearEnd": 2023,
       "links": [
+        "https://imp-market-place-ui.vercel.app/"
       ],
       "images" : [
       ],
       "skills" : [
+        "Solidity",
+        "ImmutableX",
+        "Ethereum",
+        "EthersJS/RS",
+        "Hardhat",
+        "Typechain",
         "Node",
         "Typescript",
         "NestJS",
         "React",
-        "MaterialUI",
-        "MongoDB",
-        "OpenAPI"
+        "ChakraUI",
+        "OpenAPI",
+        "Yarn"
       ]
     }
   ]

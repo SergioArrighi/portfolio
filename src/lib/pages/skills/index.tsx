@@ -70,7 +70,7 @@ const Skills = (props: PageProps) => {
       id: 'skills',
       title: 'Tap on the skill to see projects',
       status: 'info',
-      duration: 2000,
+      duration: 5000,
       isClosable: true,
     });
   }, [sendToast]);
