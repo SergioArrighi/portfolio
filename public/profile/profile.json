@@ -379,59 +379,86 @@
       ]
     }
   ],
-  "projects" : [
-    {
-      "title": "Worker",
-      "description": "A system for work desks reservation and activation",
-      "yearStart": 2021,
-      "yearEnd": 2024,
-      "links": [
-      ],
-      "images" : [
-        "/images/projects/worker/worker-calendar.png",
-        "/images/projects/worker/worker-preference.png",
-        "/images/projects/worker/worker-energy.png",
-        "/images/projects/worker/worker-network.png",
-        "/images/projects/worker/worker-map.png",
-        "/images/projects/worker/worker-firmware.png",
-        "/images/projects/worker/worker-rabbitmq.png",
-        "/images/projects/worker/worker-kie.png"
-      ],
-      "skills" : [
-        "Node",
-        "Typescript",
-        "NestJS",
-        "React",
-        "MaterialUI",
-        "MongoDB",
-        "OpenAPI"
-      ]
-    },
-    {
-      "title": "Immutable Market Place",
-      "description": "A NFT collectibles market place on Immutable zkEVM network",
-      "yearStart": 2022,
-      "yearEnd": 2023,
-      "links": [
-        "https://imp-market-place-ui.vercel.app/"
-      ],
-      "images" : [
-      ],
-      "skills" : [
-        "Solidity",
-        "ImmutableX",
-        "Ethereum",
-        "EthersJS/RS",
-        "Hardhat",
-        "Typechain",
-        "Node",
-        "Typescript",
-        "NestJS",
-        "React",
-        "ChakraUI",
-        "OpenAPI",
-        "Yarn"
-      ]
-    }
-  ]
+  "projects": {
+    "intro": "WIP section: other existing projects will be added soon.",
+    "items": [
+      {
+        "title": "Worker",
+        "description": "A system for work desks reservation and activation",
+        "yearStart": 2021,
+        "yearEnd": 2024,
+        "links": [
+        ],
+        "images" : [
+          "/images/projects/worker/worker-calendar.png",
+          "/images/projects/worker/worker-preference.png",
+          "/images/projects/worker/worker-energy.png",
+          "/images/projects/worker/worker-network.png",
+          "/images/projects/worker/worker-map.png",
+          "/images/projects/worker/worker-firmware.png",
+          "/images/projects/worker/worker-rabbitmq.png",
+          "/images/projects/worker/worker-kie.png"
+        ],
+        "skills" : [
+          "Node",
+          "Typescript",
+          "NestJS",
+          "React",
+          "MaterialUI",
+          "MongoDB",
+          "Moongose",
+          "OpenAPI",
+          "Docker",
+          "Kubernetes",
+          "Helm",
+          "RabbitMQ",
+          "Arduino",
+          "C++",
+          "Npm",
+          "Git",
+          "Java",
+          "MaterialUI"
+        ]
+      },
+      {
+        "title": "Immutable Market Place",
+        "description": "A NFT collectibles market place on Immutable zkEVM network",
+        "yearStart": 2022,
+        "yearEnd": 2023,
+        "links": [
+          "https://imp-market-place-ui.vercel.app/"
+        ],
+        "images" : [
+          "/images/projects/imp/imp-home.png",
+          "/images/projects/imp/imp-rainbow.png",
+          "/images/projects/imp/imp-connected.png",
+          "/images/projects/imp/imp-collections.png",
+          "/images/projects/imp/imp-cards.png",
+          "/images/projects/imp/imp-mint.png",
+          "/images/projects/imp/imp-profile.png",
+          "/images/projects/imp/imp-details.png",
+          "/images/projects/imp/imp-list.png",
+          "/images/projects/imp/imp-order.png"
+        ],
+        "skills" : [
+          "Solidity",
+          "ImmutableX",
+          "Ethereum",
+          "EthersJS/RS",
+          "Hardhat",
+          "Typechain",
+          "Node",
+          "Typescript",
+          "NestJS",
+          "React",
+          "ChakraUI",
+          "OpenAPI",
+          "Yarn",
+          "Docker",
+          "Kubernetes",
+          "Helm"
+        ]
+      }
+    ]
+  }
 }

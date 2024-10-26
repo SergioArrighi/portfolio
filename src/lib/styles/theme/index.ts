@@ -1,4 +1,8 @@
-import { createMultiStyleConfigHelpers, extendTheme } from '@chakra-ui/react';
+import {
+  createMultiStyleConfigHelpers,
+  defineStyleConfig,
+  extendTheme,
+} from '@chakra-ui/react';
 import { type StyleFunctionProps, mode } from '@chakra-ui/theme-tools';
 
 import { config } from './config';
@@ -104,6 +108,12 @@ const Assistant = assistantHelper.defineMultiStyleConfig({
   },
 });
 
+const Alert = defineStyleConfig({
+  baseStyle: {
+    rounded: 'lg',
+  },
+});
+
 export const theme = extendTheme({
   styles: {
     global: (props: StyleFunctionProps) => ({
@@ -123,6 +133,7 @@ export const theme = extendTheme({
     ProjectItem,
     Carousel,
     Assistant,
+    Alert,
   },
   colors: {
     primary: {

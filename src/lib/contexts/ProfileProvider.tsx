@@ -10,6 +10,7 @@ import type {
   SkillItem,
   SkillData,
   ProjectItem,
+  ProjectData,
 } from './ProfileContext';
 import { ProfileContext } from './ProfileContext';
 
@@ -25,7 +26,10 @@ const ProfileProvider: React.FC<ProfileProviderProps> = ({ children }) => {
     items: [],
   });
   const [experiences, setExperiences] = useState<ExpData[]>([]);
-  const [projects, setProjects] = useState<ProjectItem[]>([]);
+  const [projects, setProjects] = useState<ProjectData>({
+    intro: '',
+    items: [],
+  });
 
   useEffect(() => {
     fetch('profile/profile.json', {
@@ -53,7 +57,7 @@ const ProfileProvider: React.FC<ProfileProviderProps> = ({ children }) => {
 
   const getProjects = useCallback(
     (skillTitle: string) => {
-      return projects.filter(
+      return projects.items.filter(
         (project: ProjectItem) => project.skills?.includes(skillTitle)
       );
     },
