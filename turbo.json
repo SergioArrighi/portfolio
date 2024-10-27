@@ -7,7 +7,13 @@
     "build": {
       "dependsOn": ["type-check"],
       "outputs": ["dist/**", "public/**"],
-      "env": []
+      "env": [
+        "VITE_XP_BAR_INCREMENT",
+        "VITE_XP_BAR_DELAY",
+        "VITE_XP_BAR_RADIUS",
+        "VITE_XP_BAR_ANIMATE",
+        "VITE_GPT_BRIDGE_URL"
+      ]
     },
     "lint": {
       "outputs": [],
