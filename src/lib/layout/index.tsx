@@ -23,7 +23,7 @@ const Layout = ({ children }: LayoutProps) => {
         <Box width="full" as="main" marginY={22}>
           <Header />
           {children}
-          {import.meta.env.VITE_GPT_BRIDGE_URL && <ChatGPTAssistant />}
+          <ChatGPTAssistant />
         </Box>
       </Flex>
     </Box>
