@@ -1,8 +1,6 @@
 import { Box, Flex } from '@chakra-ui/react';
 import type { ReactNode } from 'react';
 
-import ChatGPTAssistant from '../components/chatgpt-assistant/ChatGTPAssistant';
-
 import Header from './Header';
 import Meta from './Meta';
 
@@ -23,7 +21,6 @@ const Layout = ({ children }: LayoutProps) => {
         <Box width="full" as="main" marginY={22}>
           <Header />
           {children}
-          {import.meta.env.VITE_GPT_BRIDGE_URL && <ChatGPTAssistant />}
         </Box>
       </Flex>
     </Box>
