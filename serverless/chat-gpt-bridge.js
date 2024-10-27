@@ -16,7 +16,7 @@ async function fetchOpenAI(question, thread, env) {
   const headers = {
     'Content-Type': 'application/json',
     'Authorization': `Bearer ${env.ASSISTANT_KEY}`,
-    'OpenAI-Beta': 'assistants=v1'
+    'OpenAI-Beta': 'assistants=v2'
   }
 
   let run;
