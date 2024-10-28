@@ -76,8 +76,23 @@ export default {
     const responseHeaders = {
       'Access-Control-Allow-Origin': 'https://www.sarrighi.info',
       'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
-      'Access-Control-Allow-Headers': 'Content-Type',
+      'Access-Control-Allow-Headers': 'Authorization, Content-Type',
     };
+
+    if (request.method === 'OPTIONS') {
+      return new Response(null, {
+        headers: responseHeaders,
+        status: 204,
+      });
+    }
+    
+    const apiKey = env.API_KEY;
+    const authHeader = request.headers.get("Authorization");
+
+    if (authHeader !== `Bearer ${apiKey}`) {
+      return new Response("Unauthorized", { status: 401 });
+    }
+
     const { searchParams } = new URL(request.url);
     const question = searchParams.get('question');
     if (!question) {
