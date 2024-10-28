@@ -76,6 +76,9 @@ const ChatGPTModal = ({ isOpen, onClose }: ChatGPTModalProps) => {
     }`;
     const result = await fetch(gptUrl, {
       method: 'GET',
+      headers: {
+        Authorization: `Bearer ${import.meta.env.VITE_GPT_BRIDGE_KEY}`,
+      },
     });
     if (result.status === 200) {
       const answer: Message = await result.json();

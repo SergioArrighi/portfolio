@@ -12,7 +12,8 @@
         "VITE_XP_BAR_DELAY",
         "VITE_XP_BAR_RADIUS",
         "VITE_XP_BAR_ANIMATE",
-        "VITE_GPT_BRIDGE_URL"
+        "VITE_GPT_BRIDGE_URL",
+        "VITE_GPT_BRIDGE_KEY"
       ]
     },
     "lint": {
