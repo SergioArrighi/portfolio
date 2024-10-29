@@ -143,6 +143,16 @@
         "title":"Tools & Platforms",
         "items":[
           {
+            "icon":"/images/skills/vercel.svg",
+            "title":"Vercel",
+            "xp": 50
+          },
+          {
+            "icon":"/images/skills/heroku.svg",
+            "title":"Heroku",
+            "xp": 60
+          },
+          {
             "icon":"/images/skills/git.svg",
             "title":"Git",
             "xp": 80
@@ -422,7 +432,7 @@
       },
       {
         "title": "Immutable Market Place",
-        "description": "A NFT collectibles market place on Immutable zkEVM network",
+        "description": "A NFT collectibles marketplace on Immutable zkEVM with a Progressive Web dApp (PWdA) (demo available in Details).",
         "yearStart": 2022,
         "yearEnd": 2023,
         "links": [
@@ -430,7 +440,9 @@
         ],
         "images" : [
           "/images/projects/imp/imp-home.png",
+          "/images/projects/imp/imp-app-home.png",
           "/images/projects/imp/imp-rainbow.png",
+          "/images/projects/imp/imp-app-rainbow.png",
           "/images/projects/imp/imp-connected.png",
           "/images/projects/imp/imp-collections.png",
           "/images/projects/imp/imp-cards.png",
@@ -456,7 +468,9 @@
           "Yarn",
           "Docker",
           "Kubernetes",
-          "Helm"
+          "Helm",
+          "Vercel",
+          "Heroku"
         ]
       }
     ]

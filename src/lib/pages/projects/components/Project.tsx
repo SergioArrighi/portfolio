@@ -100,7 +100,14 @@ const Project = memo(({ project }: ProjectProps) => {
       fetch(`profile/projects/${project.title.toLowerCase()}.md`, {
         method: 'GET',
       })
-        .then(async (res) => setDetailsMarkdown(await res.text()))
+        .then(async (res) => {
+          if (res.ok) {
+            setDetailsMarkdown(await res.text());
+          } else {
+            // If the response is not OK (e.g., 404), set detailsMarkdown to an empty string
+            setDetailsMarkdown('');
+          }
+        })
         .catch((err) => err);
     }
     setIsCollapsed(!isCollapsed);

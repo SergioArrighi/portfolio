@@ -31,21 +31,7 @@ The system is geared towards those businesses or organizations which embraced th
  - The business intelligence module applies the defined rules and proposes a list of desks.
  - The user expresses his preferences by sorting the provided list through drag and drop and confirms.
  - The system computes a solution to cover all the occurrences of the appointment by booking the desks as per expressed preference.
-```mermaid
-sequenceDiagram
-User ->> UI: Reserve desk/Create appointment
-UI-->> Backend: 
-Backend -->> BI: 
-BI -->> BI: Execute rules
-BI -->> Backend: Return list of desks
-Backend -->> UI: Return list of desks
-UI -->> User: Return list of desks
-User -->> UI: Sorts the list with Drag&Drop
-User -->> UI: Confirms preference
-UI -->> Backend: 
-Backend -->> Backend: Creates appointment and occurrences
-Backend -->> Backend: Reserves desks
-```
+
 ### On premise hardware module
  - An hardware module, controlling a set of relays, with a set of RFID/NFC readers is installed in the premises of the organization
  - The user authenticates with a badge and the hardware module
